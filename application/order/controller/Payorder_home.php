@@ -4,8 +4,9 @@
  * User: qls
  */
 namespace app\order\controller;
+use app\order\model\Numberrecord;
 use Home\HomeController;
-use My\MasterModel;
+use think\Request;
 
 class PayorderHome extends HomeController
 {
@@ -15,28 +16,25 @@ class PayorderHome extends HomeController
         parent::__construct();
         config('parent_temple', '');
     }
-     /**
-     * 数据列表 $_p 为分页数据
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
-     */
-    function index()
-    {
-        $where=array();$field='*';$order='';$group='';$join=array();
-       $list= $this->getListData($this->model_name,$where,$field,$order,$group,$join);
-        $this->display('list',$list);
-        return view('index');
-    }
 
     /**
-     * 单条数据详情
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
+     * @var \app\order\model\Numberrecord
      */
-    function show()
-    {
-        $where=array();$field='*';$order='';$group='';$join=array();
-        $info=MasterModel::inIt($this->model_name)->field($field)->getOne($where,$order,$group,$join);
-        $this->display('info',$info);
-        return view('details');
+    protected  $num_obj='';
+
+    /**
+     * 添加
+     */
+    function addGoodsOrder(){
+        if(Request::instance()->isPost()){
+
+        }else{
+            if(!is_object($this->num_obj)){
+                $this->num_obj=new Numberrecord();
+            }
+            $pay_order_sn=$this->num_obj->getAddNum('2');
+            return view('index');
+        }
     }
 
 }

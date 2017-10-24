@@ -77,6 +77,7 @@ class MemberAdmin extends AdminController
                 if ($line) $this->success('修改成功', url('index'));
                 else $this->error('修改失败');
             } else {
+                $data['reg_time']=time();
                 $id = MasterModel::inIt($this->model_name)->insertData($data);
                 if ($id) $this->success('添加成功', url('index'));
                 else $this->error('添加失败');

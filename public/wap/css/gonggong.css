@@ -1,0 +1,64 @@
+*{ margin:0; padding:0; font-family:"微软雅黑" ;}
+ 
+ ul,li{ list-style:none;}
+ 
+ a{ text-decoration:none;color: #2F2F2F;}
+ 
+ 
+
+ 
+
+ 
+ .t-right{ text-align: right;}
+ 
+ .t-left{ text-align: left;}
+ 
+ /*********导航栏************/
+.title{ height: 44px; width:100%; background-color: #FFFFFF; position: fixed;top:0px;z-index: 100;line-height: 44px; color: #FFFFFF;
+        text-align: center; background: 
+         -webkit-linear-gradient(left, #87e3f2 ,#4ec5d9 ); 
+        background: -o-linear-gradient(right, #87e3f2, #4ec5d9);
+        background: -moz-linear-gradient(right, #87e3f2,#4ec5d9); 
+        background: linear-gradient(to right, #87e3f2 , #4ec5d9); 
+        }
+         
+ [class*="col-"] {
+    float: left;} 
+    
+           
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+ .tu img{ height: 20px;  margin-top: 14px;}   
+   
+
+/*****************正文*************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

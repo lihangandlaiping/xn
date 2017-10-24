@@ -1,15 +1,15 @@
 <?php
 /**
- * Order
+ * Numberrecord
  * User: qls
  */
 namespace app\order\controller;
 use Home\HomeController;
 use My\MasterModel;
 
-class OrderHome extends HomeController
+class NumberrecordHome extends HomeController
 {
-    protected $model_name='order';
+    protected $model_name='number_record';
     function __construct()
     {
         parent::__construct();

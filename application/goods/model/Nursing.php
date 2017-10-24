@@ -70,6 +70,9 @@ class Nursing extends MasterModel
     {
         return parent::deleteData($where);
     }
+
+
+
 }
 
 ?>

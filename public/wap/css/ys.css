@@ -1,0 +1,478 @@
+*{padding: 0px;margin: 0px;}
+a{
+    text-decoration: none;
+    color:#444 !important;
+}
+a:hover{
+    text-decoration: none !important;
+}
+#master{position: absolute;top: 0px;left: 0px;width: 100%; font-family: "微软雅黑"; }
+.userinfo .imgbox{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;}
+
+.userinfo .title{position: relative;width: 100%;height: 228px;}
+.userinfo .title .heardimg{width: 100%;height: 130px;position: relative;margin-top: 40px;}
+.userinfo .title .heardimg img{width: 130px;height: 130px; border-radius: 50%;}
+.userinfo .title .username{width: 100%;position: relative;text-align: center;font-size: 24px;color: #333;margin-top: 22px;}
+.userinfo .hx{position: relative;width: 100%;height: 24px;background-color: #f8f8f8;clear: both}
+
+.userinfo .maxicon{position: relative;width: 100%;height: 120px;margin-top: 32px;border-bottom: 1px solid #e1e1dc;}
+.userinfo .maxicon .icons{width:20%;position: relative;float: left; }
+.userinfo .maxicon .icons img{width: 48px;position: relative;float: left; }
+.userinfo .maxicon .icons .text{width: 100%;text-align: center;position: relative;margin-top: 10px;font-size: 24px;color:#444;}
+
+.userinfo .allorders{width: 100%;position: relative;height: 80px;}
+.userinfo .allorders .centers{position: relative;width: 100%;height:50px;    line-height: 50px;}
+.userinfo .allorders .centers .icon{width:50px;}
+.userinfo .allorders .centers img{position: relative;margin-left: 40px;float: left;}
+.userinfo .allorders .centers span{font-size: 28px;float: left;margin-left: 25px;}
+.userinfo .allorders .centers .righticon{float: right;height: 100%;margin-right: 40px;}
+.userinfo .allorders .centers .righticon img{width: 15px;}
+
+.userinfo .itemline{position: relative;width: 100%;height: 80px;}
+.userinfo .itemline .lines{position: relative;width: 100%;height: 40px;line-height: 40px;}
+.userinfo .itemline .lines .itemtext{position: relative;font-size: 28px;color: #131313;  float: left;margin-left: 30px;}
+.userinfo .itemline .lines .tip{background-color: #ff1823;color: #fff;line-height: 30px;text-align: center;border-radius: 15px;position: relative;float: right;margin-right: 30px;min-width: 30px;margin-top: 5px;}
+
+.userinfo .itemline .lines .righticon2{float: right;height: 100%;margin-right: 30px;}
+.userinfo .itemline .lines .righticon2 img{    margin-top: 4px;position: relative;width: 15px;}
+.userinfo .bottoms{position: relative;width: 100%;height: 120px;}
+
+
+
+
+
+
+
+/*----------------------------------------------------订单---------------------------------------------------------*/
+.orders .heard{position: relative;width: 100%;height: 90px;}
+.orders .heard .item{position: relative;float: left;width: 20%;height: 100%;line-height: 90px;font-size: 28px;text-align: center}
+.orders .heard .item .text{height: 88px;color: #333}
+.orders .heard .item .active{border-bottom: 2px solid #ef2a1d;color: #ef2a1d;}
+.orders .hx{position: relative;width: 100%;height: 24px;background-color: #f8f8f8;clear: both}
+.orders .imgbox{display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;}
+.orders .no_body{width: 100%;position: relative;}
+.orders .no_body .no_img{position: relative;width: 100%;margin-top: 200px;}
+.orders .no_body .t1{position: relative;width: 100%;text-align: center;margin-top: 30px;font-size: 24px;}
+.orders .no_body .t2{position: relative;width: 100%;text-align: center;margin-top: 24px;color: #969693;
+    font-size: 24px;}
+
+
+.orders .listbody{position: relative;width: 100%;}
+.orders .listbody .items{position: relative;width: 100%;clear: both;background-color: #fff;}
+.orders .listbody .items .title{position: relative;width: 100%;height: 86px;font-size: 28px;}
+.orders .listbody .items .title .line1{position: relative;height: 23.5px;line-height: 23.5px;margin-top: 22px;}
+.orders .listbody .items .title .line2{position: relative;height: 23.5px;line-height: 23.5px;margin-top: 12px;}
+.orders .listbody .items .title .line1 .shop_name{position: relative;margin-left: 30px;text-align: left;float: left;color: #333;}
+.orders .listbody .items .title .line1 .status{position: relative;margin-right: 30px;text-align: left;float: right;color: #ef2a1d;}
+.orders .listbody .items .title .line2 .order_sn{position: relative;margin-left: 30px;text-align: left;float: left;color: #999;font-size: 24px;}
+.orders .listbody .items .goods{width: 100%;position: relative;background-color: #f9f9f9;height: 260px;}
+.orders .listbody .items .goods .infos{width: 90%;margin-left: 5%;position: relative;height: 202px;    padding-top: 14px;padding-bottom:14px;}
+.orders .listbody .items .goods .infos .book{ position: relative;width: 162px;height: 100%;background-color: #fff;float: left;overflow: hidden;margin-right:20px;}
+.orders .listbody .items .goods .infos .book img{width: 100%;}
+.orders .listbody .items .goods .infos .bookinfo{position: absolute;height: 100%;float: left;width:100%;}
+.orders .listbody .items .goods .infos .bookinfo .book_title{font-size: 24px;height: 64px;line-height: 32px;overflow: hidden;display: -webkit-box;  -webkit-box-orient: vertical;  -webkit-line-clamp: 2;}
+.orders .listbody .items .goods .infos .bookinfo .attrabiut{font-size: 24px;height: 64px;line-height: 32px;overflow: hidden;display: -webkit-box;  -webkit-box-orient: vertical;  -webkit-line-clamp: 2;color: #666;margin-top: 15px;}
+.orders .listbody .items .goods .infos .bookinfo .price_num{position: relative;font-size: 28px;color: #333;    margin-top: 20px;display: flex;justify-content: space-between;}
+.orders .listbody .items .goods .infos .bookinfo .price_num .num{position: relative;float: left}
+.orders .listbody .items .goods .infos .bookinfo .price_num .price{position: relative;float: right}
+.orders .listbody .items .num_sum{position: relative;width: 100%;height: 60px;line-height: 60px;text-align: center;color: #333;font-size: 26px;border-bottom: 1px solid #e1e1e1;}
+.orders .listbody .items .money_sum{position: relative;width: 100%;height: 60px;line-height: 60px;text-align: right;color: #333;font-size: 26px;border-bottom: 1px solid #e1e1e1;}
+.orders .listbody .items .money_sum .money{color: #fc331e;}
+.orders .listbody .items .money_sum .yf{font-size: 24px;}
+.orders .listbody .items .actions{position: relative;width: 100%;height: 94px; padding-top: 14px;}
+.orders .listbody .items .actions .btn{position: relative;height: 58px;border-radius: 30px;float: right;line-height: 58px;font-size: 26px; border: 1px solid;margin-right: 30px;padding-left: 20px;padding-right: 20px;}
+.orders .listbody .items .actions .active{border-color: #fc331e;color: #fc331e}
+
+
+
+.orderdetail .address{position: relative;width: 100%;height: 140px;padding-top: 30px;}
+.orderdetail .address .line1{position: relative;width: 100%;color: #333;font-size: 28px; overflow: hidden}
+.orderdetail .address .line1 .name{position: relative;margin-left: 30px;float: left}
+.orderdetail .address .line1 .tel{position: relative;margin-right: 30px;float: right}
+.orderdetail .address .line2{position: relative;margin-top: 20px;color: #666;font-size: 24px;margin-left: 30px;height: 64px;line-height: 32px;overflow: hidden;display: -webkit-box;  -webkit-box-orient: vertical;  -webkit-line-clamp: 2;  }
+.orderdetail .hx{position: relative;width: 100%;height: 24px;background-color: #f8f8f8;clear: both}
+.orderdetail .goodsinf .title{position: relative;width: 100%;height: 80px;font-size: 26px;line-height: 80px;}
+.orderdetail .goodsinf .title .shop_name{position: relative;margin-left: 30px;text-align: left;float: left;color: #333;}
+.orderdetail .goodsinf .title .status{position: relative;margin-right: 30px;text-align: left;float: right;color: #ef2a1d;}
+.orderdetail .goodsinf .goods{width: 100%;position: relative;background-color: #f9f9f9;height: 260px;}
+.orderdetail .goodsinf .goods .infos{width: 90%;margin-left: 5%;position: relative;height: 202px;    padding-top: 14px;}
+.orderdetail .goodsinf .goods .infos .book{ position: relative;width: 162px;height: 100%;float: left;overflow: hidden;background-color: #fff;}
+.orderdetail .goodsinf .goods .infos .book img{width: 100%;}
+.orderdetail .goodsinf .goods .infos .bookinfo{position: absolute;height: 100%;float: left;width:100%;}
+.orderdetail .goodsinf .goods .infos .bookinfo .book_title{font-size: 24px;height: 64px;line-height: 32px;overflow: hidden;display: -webkit-box;  -webkit-box-orient: vertical;  -webkit-line-clamp: 2;  }
+.orderdetail .goodsinf .goods .infos .bookinfo .attrabiut{font-size: 24px;height: 64px;line-height: 32px;overflow: hidden;display: -webkit-box;  -webkit-box-orient: vertical;  -webkit-line-clamp: 2;color: #666;margin-top: 15px;}
+.orderdetail .goodsinf .goods .infos .bookinfo .price_num{position: relative;width: 100%; font-size: 28px;color: #333;    margin-top: 20px;}
+.orderdetail .goodsinf .goods .infos .bookinfo .price_num .num{position: relative;float: left}
+.orderdetail .goodsinf .goods .infos .bookinfo .price_num .price{position: relative;float: right}
+
+.orderdetail .goodsinf .info_line{position: relative;width: 100%;height: 60px;font-size: 28px;color: #333;line-height: 60px;}
+.orderdetail .goodsinf .info_line .name{position: relative;float: left;margin-left: 30px;overflow: hidden;display: -webkit-box;  -webkit-box-orient: vertical;  -webkit-line-clamp: 1}
+.orderdetail .goodsinf .info_line .val{position: relative;float: right;margin-right: 30px;}
+.orderdetail .goodsinf .sum{border-top: 1px solid #ccc;height: 80px;line-height: 80px;}
+.orderdetail .goodsinf .info_line .active{color: #f71514}
+.orderdetail .goodsinf .ordertimes{ position: relative;width: 100%;color: #999;font-size: 24px;margin-top: 20px;margin-bottom: 20px;}
+.orderdetail .goodsinf .ordertimes .text{position: relative;margin-left: 30px;}
+.orderdetail .bottombox{ position: fixed;width: 100%;height: 80px;color: #fff;background-color: #f71514;text-align: center;line-height: 80px;font-size: 30px;bottom: 0px;left: 0px;}
+.orderdetail .bottomboxzw{position: relative;width: 100%;height: 160px;background-color: #f8f8f8}
+
+
+
+/*footer固定的底部样式*/
+.footer_fixed{
+    position: fixed;
+    bottom: 0;
+    width:100%;
+    height:104px;
+    background: #F8F8F8;
+    border-top:1px solid #E3E3E3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
+}
+.footer_fixed li{
+    width:25%;
+    display:inline-block;
+    text-align: center;
+}
+.footer_fixed li a{
+    display:inline-block;
+    width: 100%;
+}
+.footer_fixed dl{
+    margin:5px 0;
+}
+.footer_fixed dd{
+    color:#c7c5c6;
+}
+.c_active dd{
+    color:#f01f39;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none !important;
+}
+/*******弹出的遮罩层**********/
+.fade{
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.4);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    display: none;
+}
+.cart_detete_body{
+    width: 80%;
+    height: 262px;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    margin-left: -40%;
+    margin-top: -131px;
+    z-index: 999;
+    border-radius: 10px;
+}
+.cart_detele_sure{
+    width:100%;
+    height:162px;
+    line-height:162px;
+    text-align: center;
+    font-weight: bold;
+    color:#191919;
+    font-size:34px;
+    border-bottom: 1px solid #ddd;
+}
+.cart_detele{
+    width:100%;
+    height:100px;
+    margin-top:36px;
+    text-align: center;
+    font-weight: bold;
+    color:#191919;
+    font-size:30px;
+    border-bottom: 1px solid #ddd;
+}
+.order_addr{
+    color:#333;
+    font-size:30px;
+    margin-top:30px;
+}
+.cart_ok{
+    display: flex;
+    justify-content: space-around;
+    width:100%;
+    height:100px;
+    line-height:100px;
+    text-align: center;
+    color:#333;
+    font-size:34px;
+}
+.cart_ok>div{
+    width:50%;
+}
+.cart_sure{
+    border-left: 1px solid #ddd;
+    color:#4ddf1f;
+}
+/*春航技术支持*/
+.cart_logo{
+    color:#c6c5c5;
+    font-size: 24px;
+    margin-top:320px;
+    text-align: center;
+}
+.order_bank{
+    display: none;
+}
+
+/*退款原因*/
+.order_reason{
+    width:100%;
+    background-color: #fff;
+}
+.order_reason>div{
+    width:95%;
+    padding-left: 5%;
+    height:86px;
+    line-height:86px;
+    border-bottom: 1px solid #d7d7d7;
+    font-size: 28px;
+    background-color: #fff;
+}
+.order_reason>textarea{
+    width:90%;
+    margin: 4%;
+    min-height:128px;
+    outline: none;
+    font-size: 24px;
+    border:1px solid #D6D6D6;
+    background-color: #fff;
+}
+
+.refund_price{
+    width:100%;
+    background-color: #fff;
+}
+
+.order_pri{
+    width:95%;
+    padding-left: 5%;
+    height:86px;
+    line-height:86px;
+    border-bottom: 1px solid #d7d7d7;
+    font-size: 28px;
+    background-color: #fff;
+}
+.order_pri>span{
+    padding-left: 20px;
+    color:#EF3E1F;
+}
+.refund_price .ordertimes{
+    position: relative;
+    width: 100%;
+    color: #999;
+    font-size: 24px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fff;
+}
+.refund_price .ordertimes .text{
+    position: relative;
+    margin-left: 30px;
+}
+.title_code{
+    width: 90%;
+    height: 86px;
+    line-height: 86px;
+    margin-left: 5%;
+    font-size: 28px;
+    color:#333;
+}
+.refund_success{
+    position: relative;
+    width: 90%;
+    height: 80px;
+    line-height: 80px;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #333;
+    font-size: 28px;
+    border-bottom: 1px solid #e1e1e1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.refund_success img{
+    vertical-align: middle;
+}
+.after_price{
+    position: relative;
+    float: right;
+    color:#fc331e;
+}
+/*******退款售后********/
+.refund_season{
+    position: relative;
+    margin-top: 20px;
+    color: #666;
+    font-size: 28px;
+    padding-left: 30px;
+    height: 86px;
+    line-height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    border-bottom: 1px solid #d7d7d7;
+}
+.refund_cash_flag{
+    position: relative;
+    color: #666;
+    font-size: 28px;
+    padding-left: 30px;
+    height: 75px;
+    line-height: 75px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    border-bottom: 1px solid #d7d7d7;
+}
+.refund_cash_flag span{
+    padding-left: 20px;
+    color:#333;
+    font-size: 26px;
+}
+.refund_season span{
+    padding-left: 20px;
+    color:#333;
+    font-size: 26px;
+}
+.refund_info{
+    position: relative;
+    width: 100%;
+    height: 86px;
+    font-size: 28px;
+    border-bottom: 1px solid #d7d7d7;
+}
+.refund_detail_success{
+    width:100%;
+    height:175px;
+    color:#fff;
+    background-color: #EF561F;
+    font-size: 28px;
+}
+.refund_tui{
+    width:90%;
+    margin-left: 5%;
+    padding-top:40px;
+    font-size: 30px;
+}
+.refund_time{
+    width:90%;
+    margin-left: 5%;
+    margin-top:15px;
+}
+.refund_cash{
+    width:90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    height:75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28px;
+    color:#333;
+
+
+}
+.refund_nb{
+    font-size: 24px;
+    color:#EF561F;
+}
+.refund_nb span{
+    font-size: 28px;
+}
+.refund_all{
+    width:100%;
+    height:180px;
+    background-color: #fff;
+}
+.refund_flow{
+    position:relative;
+    width:100%;
+    height:150px;
+    background-color:#FAFAFA ;
+}
+.refund_cash_home{
+    width:100%;
+    height:150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+}
+.green_line{
+    width: 66%;
+    height: 3px;
+    background: url(../img/order/Order_schedule_Line.png);
+    position: absolute;
+    top: 58px;
+    left: 17%;
+}
+.refund_flow dd{
+    margin:0;
+    text-align: center;
+}
+.refund_buy{
+    font-size: 22px;
+    color:#333;
+}
+.refund_order_time{
+    font-size: 20px;
+    color:#999;
+}
+.refund_count{
+    position: relative;
+    float: right;
+    color:#333;
+}
+
+#master .goodsinf .order_refund_bgc{
+    background-color: #fff;
+}
+.after_product{
+    position: relative;
+    width: 95%;
+    height: 60px;
+    line-height: 60px;
+    padding-right: 5%;
+    text-align: right;
+    color: #333;
+    font-size: 26px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

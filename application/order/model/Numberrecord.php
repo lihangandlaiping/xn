@@ -2,11 +2,11 @@
 
 use My\MasterModel;
 
-class Order extends MasterModel
+class Numberrecord extends MasterModel
 {
     function __construct()
     {
-        parent::__construct('order');
+        parent::__construct('number_record');
     }
         /**
      * 获取数据条数
@@ -69,6 +69,25 @@ class Order extends MasterModel
     function deleteData($where)
     {
         return parent::deleteData($where);
+    }
+
+    /**
+     * 获取系统编号
+     * @param $memeber_info
+     * @param string $type
+     * @return string
+     */
+    function getAddNum($type='1'){
+        $num=MasterModel::inIt('number_record')->where(['type'=>$type])->value('num');
+        if(empty($num)){
+            $num=1;
+            MasterModel::inIt('number_record')->insertData(['type'=>$type,'num'=>'1']);
+        }else{
+            MasterModel::inIt('number_record')->where(['type'=>$type])->setInc('num');
+        }
+        $str='FW';
+        if($type=='2')$str='GM';
+        return $str.sprintf('%014s',$num);
     }
 }
 

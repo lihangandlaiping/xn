@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=0.6, minimum-scale=0.6, maximum-scale=0.6, user-scalable=no"/>
+    <link href="__PUBLIC__/wap/css/public.css" rel="stylesheet" type="text/css"/>
+    <link href="__PUBLIC__/wap/css/alert.css" rel="stylesheet" type="text/css"/>
+    <script src="__PUBLIC__/wap/js/jquery-1.11.3.js"></script>
+    <script src="__PUBLIC__/wap/js/alert.js"></script>
+    <script src="__PUBLIC__/wap/js/common.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+    <title>首页</title>
+
+</head>
+<body>
+
+<!--中间主要内容-->
+<div id="main-content">
+    <!--1.搜索框-->
+    <div class="search">
+        <div class="search_box"
+             style="border-radius:40px;border:1px solid #B4B4B4;width:80%;padding:0;margin-left:30px;height:60px;line-height:60px;">
+            <form id="select_books"
+                  action="">
+                <input type="text" id="select_goods_name" name="goods_name" value="" placeholder="搜索图书"
+                       style="border:none;height:58px;line-height:58px;font-size:26px;"/>
+            </form>
+            <div id="select_sub" style="height:40px;">
+                <img src="__PUBLIC__/wap/img/index/icon_ss.png" alt=""
+                />
+            </div>
+        </div>
+        <div class="scan_code" id="scan_code">
+            <img src="__PUBLIC__/wap/img/index/nav_sys.png" alt=""
+            />
+        </div>
+    </div>
+
+
+    <!--4.你想要的书单在这里-->
+    <div>
+        <div class="you_want">
+            订单商品
+        </div>
+        <ul>
+
+            <li class="want_item">
+                <a href="">
+                    <div class="want_all">
+
+                        <div class="want_lf">
+                            <div class="want_picture">
+                                <img src="__PUBLIC__/wap/img/index/icon_gwc.png" alt=""/>
+                            </div>
+                            <div class="want_title" style="font-size:24px;">21321</div>
+                            <div class="want_price">¥21321</div>
+                            <div class="org_price"><s>¥21321</s></div>
+                            <div class="want_sale">
+                                <div>
+                                    销量：1件
+                                </div>
+                                <div class="want_cart" data-id="1">
+                                    <img src="__PUBLIC__/wap/img/index/icon_gwc.png" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+
+
+</div>
+<!--<div class="cart_logo" style="color:#c6c5c5;font-size:24px;margin-top:30px;margin-bottom:30px;text-align:center;">-->
+<!--    <img src="--><?php //echo __ROOT__ ?><!--/public/wap/img/cart/LOGO.png" alt=""/>-->
+<!--    <div>春航技术支持</div>-->
+<!--</div>-->
+
+<!--弹出层-->
+<div class="fade" id="fade">
+    <!--弹出层-->
+    <div class="succ-pop">
+        <!--商品价格-->
+        <form id="add_goods_cart">
+            <div class="pop_detail">
+
+                <div class="pop_zi">
+                    <div class="pop_img">
+                        <img src="__PUBLIC__/wap/img/index/icon_gwc.png" alt=""/>
+                    </div>
+                    <div class="pop_title">
+                        <div>23213213</div>
+
+                    </div>
+                    <div class="pop_price">
+                        ¥<span><?php echo sprintf("%.2f", $goods_info['price']) ?></span>
+                    </div>
+                </div>
+                <img src="__PUBLIC__/wap/img/index/close.png" class="sp_concel"/>
+            </div>
+
+
+            <!--商品数量-->
+            <div class="sp_buy_count">
+                <div class="sp_add_less" >
+                    <div class="sp_buy_nb">购买数量：</div>
+                    <div class="sp_add update_num" data-type="0">－</div>
+                    <input type="hidden" id="goods_id" name="goods_id" value="1">
+                    <input type="text"
+                           onkeyup="this.value=this.value.replace(/\D/g,'')"
+                           onafterpaste="this.value=this.value.replace(\D/g,'')" class="sp_input" id="goods_num" name="number" value="1" placeholder="1"/>
+                    <div class="sp_less update_num" data-type="1">＋</div>
+                </div>
+            </div>
+            <!--确定购买-->
+            <div class="sp_of_buy" id="sub_from">
+                确定
+            </div>
+        </form>
+    </div>
+</div>
+<!--footer-->
+<ul class="footer_fixed">
+    <li>
+        <a href="">
+            <dl class="c_active">
+                <dt><img src="<?php echo __ROOT__ ?>/public/wap/img/footer/btn_sy_pressed.png" class="" alt=""></dt>
+                <dd>首页</dd>
+            </dl>
+        </a>
+    </li>
+    <li>
+        <a href="">
+            <dl>
+                <dt><img src="<?php echo __ROOT__ ?>/public/wap/img/footer/btn_fl_normal.png" alt=""></dt>
+                <dd>分类</dd>
+            </dl>
+        </a>
+    </li>
+    <li>
+        <a href="">
+            <dl>
+                <dt><img src="<?php echo __ROOT__ ?>/public/wap/img/footer/btn_gwc_normal.png" alt=""></dt>
+                <dd>购物车</dd>
+            </dl>
+        </a>
+    </li>
+    <li>
+        <a href="">
+            <dl>
+                <dt><img src="<?php echo __ROOT__ ?>/public/wap/img/footer/btn_gr_normal.png" alt=""></dt>
+                <dd>我的</dd>
+            </dl>
+        </a>
+    </li>
+</ul>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        /**
+         * 微信扫一扫功能
+         */
+        wx.config({
+            debug: false,
+            appId: "",
+            timestamp: '',
+            nonceStr: "",
+            signature: "",
+            jsApiList: [
+                'scanQRCode'
+            ]
+        });
+
+        $('#scan_code').click(function () {
+            wx.scanQRCode({
+                needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                success: function (res) {
+                    var str_num = res.resultStr.indexOf(',');
+                    var str = res.resultStr.substring(str_num * 1 + 1);
+                    $('#select_goods_name').val(str);
+                    $('#select_books').submit();
+                }
+            });
+        });
+
+        $('.want_cart').click(function () {
+            var goods_id = $(this).attr('data-id');
+
+
+            $('#fade').show();
+            return false;
+        });
+        $('#fade ').delegate('.sp_concel', 'click', function () {
+            $('#fade').hide();
+            return false;
+        });
+    });
+
+
+</script>
+
+
+</body>
+
+
+</html>
+
+

@@ -178,7 +178,7 @@ function tableRelation($name)
         } else {
             $tablearr[$newarray['db_table']] = 1;
         }
-        $join[] = array("{$newarray['db_table']} {$newarray['db_table']}", "{$name}.{$row['field']}={$newarray['db_table']}.{$newarray['primary_key']}", 'left');
+        $join[] = array("{$newarray['db_table']} `{$newarray['db_table']}`", "{$name}.{$row['field']}={$newarray['db_table']}.{$newarray['primary_key']}", 'left');
     }
     return $join;
 }

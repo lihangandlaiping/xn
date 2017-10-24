@@ -212,7 +212,7 @@ class AdminController extends MasterController
         $field=MasterModel::inIt('model')->field('show_filed,id')->getOne(array('name'=>$this->model_name));
 
         if(!$field['show_filed']){
-            $field = MasterModel::inIt('field f')->field('f.field,f.name,f.type,ma.name as tables')->joinData(array(array('model ma', 'ma.id=f.model_id', 'left')))->getListData(array('f.model_id' => $field['id'], 'f.is_column' => 2));
+            $field = MasterModel::inIt('field f')->field('f.field,f.name,f.type,ma.name as tables,f.extra,f.value')->joinData(array(array('model ma', 'ma.id=f.model_id', 'left')))->getListData(array('f.model_id' => $field['id'], 'f.is_column' => 2));
         }
         else
         {

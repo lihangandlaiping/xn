@@ -5,12 +5,12 @@ use My\MasterModel;
 use Admin\AdminController;
 use app\admin\model\Form;
 
-class OrderAdmin extends AdminController
+class NumberrecordAdmin extends AdminController
 {
     function __construct()
     {
         parent::__construct();
-        $this->model_name = 'order';
+        $this->model_name = 'number_record';
         config('parent_temple', 'Admin/Index/base');
     }
     /**
