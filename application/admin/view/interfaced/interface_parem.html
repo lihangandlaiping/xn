@@ -1,0 +1,22 @@
+<?php foreach($parematers as $row):?>
+<div class="form-group">
+    <label class="col-sm-5 control-label">{$row['title']}（{$row['name']}）</label>
+    <div class="col-sm-7">
+        <input type="text" class="form-control"  name="{$row['name']}" value="{$row['values']?:$row['default']}"  />
+    </div>
+</div>
+<?php endforeach;?>
+        <?php if($interface['is_token_valid']==1):?>
+<div class="form-group">
+    <label class="col-sm-5 control-label">uid</label>
+    <div class="col-sm-7">
+        <input type="text" class="form-control"  name="uid" value=""  />
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-5 control-label">token</label>
+    <div class="col-sm-7">
+        <input type="text" class="form-control"  name="token" value=""  />
+    </div>
+</div>
+        <?php endif;?>

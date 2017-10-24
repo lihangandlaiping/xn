@@ -1,0 +1,73 @@
+<style>
+    .form-horizontal .form-group{ margin-left:15px;width: 300px; }
+    .form-horizontal .firsts{float: left}
+</style>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑页面</h5>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="tab-content">
+                        <!--基本配置-->
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+                                    <?php echo action('admin/userrole/roletest',array('level'=>0,'pid'=>0));?>
+                                    <div class="hr-line-dashed"></div>
+
+
+
+                                    <input type="hidden" name="id" value="{$id?:0}"/>
+                                    <div class="form-group" style="clear: both;width: auto;">
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--基本配置 END-->
+
+                        <!--扩展-->
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-4 ">
+                                            <button class="btn btn-primary" type="submit">确定</button>
+                                            <button class="btn btn-white" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--扩展 END-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+   function checkclick(str,obj)
+   {
+       $(obj).find('.icheckbox_square-green').removeClass('checked');
+       var a=$('#'+str).prop('checked');
+      if(a==true) {
+          $('.'+str).parent().removeClass('checked');
+          $('.'+str).parent().parent().removeClass('checked');
+          $('.'+str).prop('checked',false);
+      }
+       else
+      {
+          {$('.'+str).parent().addClass('checked');$('.'+str).parent().parent().removeClass('checked'); $('.'+str).prop('checked',true);}
+      }
+
+   }
+</script>

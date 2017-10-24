@@ -1,0 +1,118 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{$menuTitle}</h5>
+                </div>
+                <div class="ibox-content">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">基本</a> </li>
+                        <!--  <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">扩展</a> </li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <!--基本配置-->
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">所属模块</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" name="data[module_id]">
+                                            <?php foreach($module as $row):?>
+                                                <option <?php echo $info['module_id']==$row['id']?'selected=selected':'';?> value="{$row['id']}">{$row['name']}</option>
+                                            <?php endforeach;?>
+                                                </select>
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+
+                                    <?php if($class):?>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">所属分类</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" name="data[class_id]">
+                                                <?php foreach($class as $row):?>
+                                                <option <?php echo $info['class_id']==$row['id']?'selected=selected':'';?> value="{$row['id']}">{$row['class_name']}</option>
+                                                <?php endforeach;?>
+                                            </select>
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <?php endif;?>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">接口标识</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[face_name]" value="{$info['face_name']}"  />
+                                            <span class="help-block m-b-none">（填接口标识，必要参数）</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">接口名称</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[face_title]" value="{$info['face_title']}" />
+                                            <span class="help-block m-b-none">（填接口名称）</span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">token验证</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" name="data[is_token_valid]">
+                                                <option <?php echo $info['is_token_valid']==1?'selected=selected':'';?> value="1">token验证</option>
+                                                <option <?php echo $info['is_token_valid']==2?'selected=selected':'';?> value="2">不验证</option>
+                                                </select>
+                                            <span class="help-block m-b-none">（默认不验证）</span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">作者</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[author]" value="{$info['author']}" />
+                                            <span class="help-block m-b-none">（填写创建人）</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+
+                                    <input type="hidden" name="action" value="<?php echo $_GET['action'];?>"/>
+                                    <input type="hidden" name="id" value="<?php echo $info['id'];?>"/>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--基本配置 END-->
+
+                        <!--扩展-->
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-4 ">
+                                            <button class="btn btn-primary" type="submit">确定</button>
+                                            <button class="btn btn-white" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--扩展 END-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

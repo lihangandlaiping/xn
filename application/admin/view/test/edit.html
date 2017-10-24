@@ -1,0 +1,60 @@
+<style>
+    div.form-control{margin: 0px;padding: 0px; height: auto;}
+</style>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑页面</h5>
+                </div>
+                <div class="ibox-content">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">基本</a> </li>
+                        <!--  <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">扩展</a> </li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <!--基本配置-->
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+                                  {$formstr}
+                                    <div class="hr-line-dashed"></div>
+                                    <input type="hidden" name="action" value="<?php echo $_GET['action'];?>"/>
+                                    <input type="hidden" name="id" value="<?php echo $info['id'];?>"/>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--基本配置 END-->
+
+                        <!--扩展-->
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-4 ">
+                                            <button class="btn btn-primary" type="submit">确定</button>
+                                            <button class="btn btn-white" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--扩展 END-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="__PUBLIC__/admin/js/demo/form-advanced-demo.min.js"></script>

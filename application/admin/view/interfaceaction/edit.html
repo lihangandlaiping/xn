@@ -1,0 +1,369 @@
+<link href="__PUBLIC__admin/css/plugins/codemirror/codemirror.css" rel="stylesheet">
+<link href="__PUBLIC__admin/css/plugins/codemirror/ambiance.css" rel="stylesheet">
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+<div class="col-sm-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>{$menuTitle}</h5>
+</div>
+<div class="ibox-content">
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">基本</a> </li>
+    <!--  <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">扩展</a> </li>-->
+</ul>
+<div class="tab-content">
+<!--基本配置-->
+<div id="tab-1" class="tab-pane active">
+<div class="panel-body">
+<form class="form-horizontal" method="post" action="">
+<?php if($_GET['action']=='edit'):?>
+<div class="form-group">
+    <label class="col-sm-1 control-label">所属接口</label>
+    <div class="col-sm-6">
+        <input type="text" class="form-control"  value="{$info['face_name']}" disabled='disabled' />
+        <span class="help-block m-b-none"></span>
+    </div>
+</div>
+<?php endif;?>
+<div class="hr-line-dashed"></div>
+<div class="form-group">
+    <label class="col-sm-1 control-label">逻辑类型</label>
+    <div class="col-sm-6">
+        <select class="form-control" onchange="actiontype(this)" name="data[type]">
+            <option <?php echo $info['type']==1?'selected=selected':'';?> value="1">自定义逻辑</option>
+            <option <?php echo $info['type']==2?'selected=selected':'';?> value="2">查询全部</option>
+            <option <?php echo $info['type']==5?'selected=selected':'';?> value="5">查询一条</option>
+            <option <?php echo $info['type']==6?'selected=selected':'';?> value="6">查询分页</option>
+            <option <?php echo $info['type']==3?'selected=selected':'';?> value="3">添加</option>
+            <option <?php echo $info['type']==4?'selected=selected':'';?> value="4">修改</option>
+
+        </select>
+        <span class="help-block m-b-none"></span>
+    </div>
+</div>
+<div id="actions1" class="actions" style="<?php echo $_GET['action']=='edit'&&$info['type']!=1?'display:none':'';?>">
+    <div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">自定义逻辑</label>
+        <div class="col-sm-6">
+            <textarea id="code1" type="text" class="form-control" name="data[custom]" >{$info['custom']}</textarea>
+            <span class="help-block m-b-none">（直接填PHP代码）</span>
+        </div>
+    </div>
+</div>
+
+<div id="actions2" class="actions" style="<?php echo $_GET['action']=='add'||($_GET['action']=='edit'&&($info['type']!=2&&$info['type']!=5&&$info['type']!=6))
+?'display:none':'';?>">
+    <div class="hr-line-dashed"></div>
+
+    <?php $tabledata=unserialize($info['table_relation']);?>
+    <?php if($tabledata):?>
+    <?php foreach($tabledata as $key=>$rows):?>
+    <div class="form-group action2ty">
+        <label class="col-sm-1 control-label">表名</label>
+        <div class="col-sm-2">
+            <select class="form-control t1" name="table[{$key}][tableName]">
+                <?php foreach($models as $row):?>
+                <option <?php echo $rows['tableName']==$row['name']?'selected=selected':'';?> value="{$row['name']}">{$row['name']}</option>
+                <?php endforeach;?>
+            </select>
+            <span class="help-block m-b-none"></span>
+        </div>
+
+        <label class="col-sm-1 control-label">别名</label>
+        <div class="col-sm-1">
+            <input type="text" class="form-control t2" name="table[{$key}][alias]" value="{$rows['alias']}" />
+            <span class="help-block m-b-none"></span>
+        </div>
+
+        <label class="col-sm-1 control-label" onclick="tishikuang(1)" style="color: #611e1e">显示字段</label>
+        <div class="col-sm-1">
+            <textarea type="text" class="form-control t3" name="table[{$key}][field]">{$rows['field']}</textarea>
+            <span class="help-block m-b-none"></span>
+        </div>
+
+        <label class="col-sm-1 control-label" onclick="tishikuang(2)" style="color: #611e1e">表关系</label>
+        <div class="col-sm-1">
+            <input type="text"  class="form-control t4" value="{$rows['relation']}" name="table[{$key}][relation]"/>
+            <span class="help-block m-b-none"></span>
+        </div>
+        <label class="col-sm-1 control-label" style="color: green" onclick="addtablerelation(this)">+添加表</label>
+        <label class="col-sm-1 control-label" style="color: red" onclick="deletetablerelation(this)">-删除表</label>
+    </div>
+    <?php endforeach;?>
+    <?php else:?>
+    <div class="form-group action2ty">
+        <label class="col-sm-1 control-label">表名</label>
+        <div class="col-sm-2">
+            <select class="form-control t1" name="table[0][tableName]">
+                <?php foreach($models as $row):?>
+                <option value="{$row['name']}">{$row['name']}</option>
+                <?php endforeach;?>
+            </select>
+            <span class="help-block m-b-none"></span>
+        </div>
+
+        <label class="col-sm-1 control-label">别名</label>
+        <div class="col-sm-1">
+            <input type="text" class="form-control t2" name="table[0][alias]" value="" />
+            <span class="help-block m-b-none"></span>
+        </div>
+
+        <label class="col-sm-1 control-label" onclick="tishikuang(1)" style="color: #611e1e">显示字段</label>
+        <div class="col-sm-1">
+            <textarea type="text" class="form-control t3" name="table[0][field]"></textarea>
+            <span class="help-block m-b-none"></span>
+        </div>
+
+        <label class="col-sm-1 control-label" onclick="tishikuang(2)" style="color: #611e1e">表关系</label>
+        <div class="col-sm-1">
+            <input type="text" class="form-control t4" name="table[0][relation]"/>
+            <span class="help-block m-b-none"></span>
+        </div>
+        <label class="col-sm-1 control-label" style="color: green" onclick="addtablerelation(this)">+添加表关系</label>
+        <label class="col-sm-1 control-label" style="color: red" onclick="deletetablerelation(this)">-删除表</label>
+    </div>
+    <?php endif;?>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">条件变量</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="data[where]" value="{$info['where']}"  />
+            <span class="help-block m-b-none"></span>
+        </div>
+        <label class="col-sm-1 control-label">排序变量</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="data[order]" value="{$info['order']}"/>
+            <span class="help-block m-b-none"></span>
+        </div>
+        <label class="col-sm-1 control-label">分组变量</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="data[group]" value="{$info['group']}" />
+            <span class="help-block m-b-none"></span>
+        </div>
+    </div>
+</div>
+
+
+<?php $tabledata=unserialize($info['data_bianlian_name']);?>
+<div id="actions3" class="actions" style="<?php echo $_GET['action']=='add'||($_GET['action']=='edit'&&($info['type']!=3))
+?'display:none':'';?>">
+    <div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">操作表</label>
+        <div class="col-sm-2">
+            <select class="form-control" name="add[tableName]" >
+                <?php foreach($models as $row):?>
+                <option <?php echo $tabledata['tableName']==$row['name']?'selected=selected':'';?> value="{$row['name']}">{$row['name']}</option>
+                <?php endforeach;?>
+            </select>
+            <span class="help-block m-b-none"></span>
+        </div>
+        <label class="col-sm-1 control-label">数据集变量名</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="add[data]" value="{$tabledata['data']}"  />
+            <span class="help-block m-b-none"></span>
+        </div>
+    </div>
+</div>
+
+<div id="actions4" class="actions" style="<?php echo $_GET['action']=='add'||($_GET['action']=='edit'&&($info['type']!=4))
+?'display:none':'';?>">
+    <div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">操作表</label>
+        <div class="col-sm-2">
+            <select class="form-control" name="update[tableName]">
+                <?php foreach($models as $row):?>
+                <option <?php echo $tabledata['tableName']==$row['name']?'selected=selected':'';?> value="{$row['name']}">{$row['name']}</option>
+                <?php endforeach;?>
+            </select>
+            <span class="help-block m-b-none"></span>
+        </div>
+        <label class="col-sm-1 control-label">数据集变量名</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="update[data]" value="{$tabledata['data']}"  />
+            <span class="help-block m-b-none"></span>
+        </div>
+        <label class="col-sm-1 control-label">条件变量名</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="data[wheres]" value="{$info['where']}" />
+            <span class="help-block m-b-none"></span>
+        </div>
+    </div>
+</div>
+
+<div class="hr-line-dashed"></div>
+<div class="form-group">
+    <label class="col-sm-1 control-label">赋值变量名</label>
+    <div class="col-sm-6">
+        <input type="text" class="form-control" name="data[bianlian_name]" value="{$info['bianlian_name']}" />
+        <span class="help-block m-b-none"></span>
+    </div>
+</div>
+
+<div class="hr-line-dashed"></div>
+<div class="form-group">
+    <label class="col-sm-1 control-label">是否输出</label>
+    <div class="col-sm-6">
+        <select class="form-control" name="data[is_output]">
+            <option value="0"  >非输出变量</option>
+            <option value="1" <?php echo $info['is_output']==1?'selected=selected':''; ?> >输出变量</option>
+        </select>
+        <span class="help-block m-b-none"></span>
+    </div>
+</div>
+
+<div class="hr-line-dashed"></div>
+<div class="form-group">
+    <label class="col-sm-1 control-label">排序</label>
+    <div class="col-sm-6">
+        <input type="text" class="form-control" name="data[sort]" value="{$info['sort']}" />
+        <span class="help-block m-b-none">（填纯数字）</span>
+    </div>
+</div>
+
+
+<div class="hr-line-dashed"></div>
+
+<input type="hidden" name="interface" value="<?php echo $_GET['interface']?:($info['face_id']?:'');?>"/>
+<input type="hidden" name="action" value="<?php echo $_GET['action'];?>"/>
+<input type="hidden" name="id" value="<?php echo $info['id'];?>"/>
+<div class="form-group">
+    <div class="col-sm-4 col-sm-offset-1">
+        <button class="btn btn-primary" onclick="submitform()" type="button">确定</button>
+        <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+    </div>
+</div>
+</form>
+</div>
+</div>
+<!--基本配置 END-->
+
+<!--扩展-->
+<div id="tab-2" class="tab-pane">
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-4 ">
+                    <button class="btn btn-primary" type="submit">确定</button>
+                    <button class="btn btn-white" type="submit">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--扩展 END-->
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="__PUBLIC__admin/js/plugins/codemirror/codemirror.js?t=1"></script>
+<script src="__PUBLIC__admin/js/plugins/codemirror/mode/javascript/javascript.js"></script>
+<script>
+    var editor_one=null;
+    $(document).ready(function(){
+        //,styleActiveLine:true,theme:"ambiance"
+        editor_one=CodeMirror.fromTextArea(document.getElementById("code1"),{lineNumbers:true,matchBrackets:true});
+    });
+    function submitform()
+    {
+        $('#tab-1 form #code1').text( editor_one.getValue());
+
+        qls.loading();
+        $.post($('#tab-1 form').attr('action'),$('#tab-1 form').serialize(),function(data){
+            qls.close();
+            if(data.code==1)
+            {
+                qls.success(data.msg,data.url);
+            }
+            else
+            {
+                qls.error(data.msg,data.url);
+            }
+        },'json')
+    }
+</script>
+<script>
+
+    function resetindex()
+    {
+        var len=$('#actions2 .action2ty').length;
+        for(var i=0;i<len;i++)
+        {
+            $('#actions2 .action2ty').eq(i).find('.t1').attr('name','table['+i+'][tableName]');
+            $('#actions2 .action2ty').eq(i).find('.t2').attr('name','table['+i+'][alias]');
+            $('#actions2 .action2ty').eq(i).find('.t3').attr('name','table['+i+'][field]');
+            $('#actions2 .action2ty').eq(i).find('.t4').attr('name','table['+i+'][relation]');
+        }
+    }
+    function tishikuang(str)
+    {
+        if(str==1)
+        {
+            qls.open('字段填写示例','<table class="table table-striped"> <thead> <tr> ' +
+            '<th>示例</th> ' +
+            '<th>描述</th> ' +
+            '</thead>' +
+            ' <tbody>' +
+            '<tr><td>' +
+            'id<br/>'+
+            'name<br/>'+
+            'sex<br/>'+
+            'age<br/>'+
+            '</td><td>每行填写一个字段标识，多个以换行分割</td></tr>'+
+            '</tbody></table>');
+        }
+        else if(str==2)
+        {
+            qls.open('表关系填写示例','<table class="table table-striped"> <thead> <tr> ' +
+            '<th>示例</th> ' +
+            '<th>描述</th> ' +
+            '</thead>' +
+            ' <tbody>' +
+            '<tr><td>' +
+            'a.id=b.uid<br/>'+
+            '</td><td>第一个表为主表，以后的表为附表。关系为表 别名下的字段名关系</td></tr>'+
+            '</tbody></table>');
+        }
+        else if(str==3)
+        {
+
+        }
+    }
+    function addtablerelation(obj)
+    {
+        var a=$(obj).parent().clone();
+        $(obj).parent().after(a);
+        resetindex();
+    }
+    function deletetablerelation(obj)
+    {
+        $(obj).parent().remove();
+        resetindex();
+    }
+    function actiontype(obj)
+    {
+        var val=$(obj).val();
+        $('.actions').hide();
+        if(val==1)
+        {
+            $('#actions1').show();
+        }
+        else if(val==2||val==5||val==6)
+        {
+            $('#actions2').show();
+        }
+        else if(val==3)
+        {
+            $('#actions3').show();
+        }
+        else if(val==4)
+        {
+            $('#actions4').show();
+        }
+    }
+</script>

@@ -1,0 +1,25 @@
+<!--左侧导航开始-->
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="nav-close"><i class="fa fa-times-circle"></i> </div>
+    <div class="">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="profile-element logo"> YANYUBMS+ </div>
+                <div class="logo-element">Y+ </div>
+            </li>
+            <?php $level=isset($level)?$level:0;?>
+            <?php foreach($menulist as $key=>$row):?>
+            <?php if($admin_user['type']==1||in_array($row['id'],$menus)):?>
+            <li > <a class="<?php echo $row['url']?'J_menuItem':'';?>" href="<?php echo $row['url']?url($row['url']):'#';?>"> <i class="{$row['log']}"></i> <span class="nav-label">{$row['title']}</span></a>
+                <ul class="nav nav-second-level">
+                <?php echo action('admin/index/left_menu',array('pid'=>$row['id'],'level'=>$level+1));?>
+                    </ul>
+            </li>
+            <?php endif;?>
+            <?php endforeach;?>
+
+        </ul>
+    </div>
+</nav>
+<!--左侧导航结束-->

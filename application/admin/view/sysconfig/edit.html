@@ -1,0 +1,183 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{$menuTitle}</h5>
+                </div>
+                <div class="ibox-content">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">网站配置</a> </li>
+                          <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">类容配置</a> </li>
+                        <li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="false">系统配置</a> </li>
+                    </ul>
+                    <div class="tab-content">
+                        <!--基本配置-->
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">网站链接</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[web_url]" value="{$info['web_url']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">网站标题</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[web_seo_title]" value="{$info['web_seo_title']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">网站关键字</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[web_seo_keyword]" value="{$info['web_seo_keyword']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">网站描述</label>
+                                        <div class="col-sm-6">
+                                            <textarea class="form-control" rows="3" name="data[web_seo_describe]">{$info['web_seo_describe']}</textarea>
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--基本配置 END-->
+
+                        <!--扩展-->
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">极光推送appKey</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[push_appKey]" value="{$info['push_appKey']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">极光推送masterSecret</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[push_masterSecret]" value="{$info['push_masterSecret']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">后台底部文字</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[admin_footer]" value="{$info['admin_footer']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">前台分页数量</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[home_page_size]" value="{$info['home_page_size']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">后台分页数量</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[admin_page_size]" value="{$info['admin_page_size']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 ">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div id="tab-3" class="tab-pane">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">后台操作日志</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control"  name="data[admin_action_log]">
+                                                <option  value="0">关闭</option>
+                                                <option {$info['admin_action_log']==1?'selected=selected':''} value="1">开启</option>
+                                            </select>
+
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">备份分卷大小</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[backup_size]" value="{$info['backup_size']}"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 ">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--扩展 END-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <script>
+            function looksl()
+            {
+                qls.open('填写示例','<table class="table table-striped"> <thead> <tr> ' +
+                '<th>字段类型</th> ' +
+                '<th>示例</th> ' +
+                '</thead>' +
+                ' <tbody>' +
+                '<tr><td>其他表字段</td><td>' +
+                'db_table:test2<br/>'+
+                'search_field:level<br/>'+
+                'primary_key:id<br/>'+
+                '<br/>'+
+                '</td><td>联动</td><td>' +
+                'table:area<br/>'+
+                'relation_field:parent_id<br/>'+
+                'id:area_id<br/>'+
+                'name:area_name<br/>'+
+                '<br/>'+
+                '</td><td>单选，多选，下拉，布尔</td><td>' +
+                '1:男士<br/>'+
+                '2:女士<br/>'+
+                '3:外星人<br/>'+
+                '<br/>'+
+                '</td></tr>'+
+                '</tbody></table>',['550px','300px']);
+            }
+            </script>

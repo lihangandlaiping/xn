@@ -1,0 +1,115 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{$menuTitle}</h5>
+                </div>
+                <div class="ibox-content">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">基本</a> </li>
+                        <!--  <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">扩展</a> </li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <!--基本配置-->
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">模块名</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[name]" value="{$info['name']}" <?php echo $_GET['action']=='edit'?'disabled=disabled':'';?> />
+                                            <span class="help-block m-b-none">（填写模块名，英文字母 必要参数）</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">中文名</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[china]" value="{$info['china']}" />
+                                            <span class="help-block m-b-none">（填中文名）</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">版本号</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[version]" value="{$info['version']}" />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">简介</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[summary]" value="{$info['summary']}" />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">下载地址</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[website]" value="{$info['website']}" />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">前台入口</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[entry]" value="{$info['entry']}" />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">前台入口</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[entry]" value="{$info['entry']}" />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="hr-line-dashed"></div>
+                                    <input type="hidden" name="action" value="<?php echo $_GET['action'];?>"/>
+                                    <input type="hidden" name="id" value="<?php echo $info['id'];?>"/>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--基本配置 END-->
+
+                        <!--扩展-->
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-4 ">
+                                            <button class="btn btn-primary" type="submit">确定</button>
+                                            <button class="btn btn-white" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--扩展 END-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

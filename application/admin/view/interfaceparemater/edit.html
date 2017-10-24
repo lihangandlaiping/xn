@@ -1,0 +1,116 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{$menuTitle}</h5>
+                </div>
+                <div class="ibox-content">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">基本</a> </li>
+                        <!--  <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">扩展</a> </li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <!--基本配置-->
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+                                    <?php if($_GET['action']=='edit'):?>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">所属接口</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  value="{$info['face_name']}" disabled='disabled' />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <?php endif;?>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">参数标识</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control"  name="data[name]" value="{$info['name']}"  />
+                                            <span class="help-block m-b-none">（填接口标识，必要参数）</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">参数名称</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[title]" value="{$info['title']}" />
+                                            <span class="help-block m-b-none">（填接口名称）</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">默认值</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[default]" value="{$info['default']}" />
+                                            <span class="help-block m-b-none">（填写创建人）</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">验证方式</label>
+                                        <div class="col-sm-6">
+                                           <select name="data[sy_vilid]" class="form-control">
+                                               <option value="">--请选择--</option>
+                                               <option <?php echo $info['sy_vilid']==2?'selected=selected':'';?> value="2">非空验证</option>
+                                               <option <?php echo $info['sy_vilid']==3?'selected=selected':'';?> value="3">手机号验证</option>
+                                               <option <?php echo $info['sy_vilid']==4?'selected=selected':'';?> value="4">邮箱验证</option>
+                                               <option <?php echo $info['sy_vilid']==5?'selected=selected':'';?> value="5">数字验证</option>
+                                               <option <?php echo $info['sy_vilid']==6?'selected=selected':'';?> value="6">json验证</option>
+
+                                               </select>
+                                            <span class="help-block m-b-none">（填写创建人）</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">验证错误提示</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="data[error_tip]" value="{$info['error_tip']}" />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+
+                                    <input type="hidden" name="interface" value="<?php echo $_GET['interface']?:($info['face_id']?:'');?>"/>
+                                    <input type="hidden" name="action" value="<?php echo $_GET['action'];?>"/>
+                                    <input type="hidden" name="id" value="<?php echo $info['id'];?>"/>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--基本配置 END-->
+
+                        <!--扩展-->
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-4 ">
+                                            <button class="btn btn-primary" type="submit">确定</button>
+                                            <button class="btn btn-white" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--扩展 END-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

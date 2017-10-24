@@ -1,0 +1,150 @@
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{$menuTitle}</h5>
+                </div>
+                <div class="ibox-content">
+                    <!--操作start-->
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <button type="button" class="btn btn-w-m btn-primary" onClick="javascrtpt:window.location.href='{:url('edit',array($cascade_field=>input($cascade_field,0)))}'">新增&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+                            <button type="button" class="btn btn-w-m btn-primary deleteall">删除&nbsp;<span class="glyphicon glyphicon-remove"></span></button>
+                        </div>
+
+                    </div>
+                    <!--操作end-->
+                    <div style="height:10px;"></div>
+                    <!--搜索start-->
+                    <div class="" id="searchform">
+                        <form  class="form-horizontal">
+                            <table class="table table-striped table1">
+                                <thead>
+                                <tr>
+                                    <?php $is_search=false;?>
+                                    <?php foreach($field as $row):if($row['searchd']==1):?>
+                                        <?php $is_search=true;?>
+                                        <th>{$row['name']}</th>
+                                    <?php endif;endforeach;?>
+                                    <?php if($is_search):?>
+                                        <th>操作</th>
+                                    <?php endif;?>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <?php foreach($field as $row):if($row['searchd']==1):?>
+                                        <?php
+                                        switch ($row['type']) {
+                                            case 'string':
+                                                echo '<td>'.$form->inputform($row['field'],input($row['field'],'')).'</td>';
+                                                break;
+                                            case 'num':
+                                                echo '<td>'.$form->inputform($row['field'],input($row['field'],'')).'</td>';
+                                                break;
+                                            case 'money':
+                                                echo '<td>'.$form->inputform($row['field'],input($row['field'],'')).'</td>';
+                                                break;
+                                            case 'date':
+                                                echo '<td style="width: 260px;"><div class="input-daterange input-group" >'.$form->timeform($row['field'],input($row['field'].'start','').','.input($row['field'].'end',''),1,2).'</div></td>';
+                                                break;
+                                            case 'datetime':
+                                                echo '<td style="width: 260px;"><div class="input-daterange input-group" >'.$form->timeform($row['field'],input($row['field'].'start','').','.input($row['field'].'end',''),1).'</div></td>';
+                                                break;
+                                            case 'bool':
+
+                                            case 'select':
+
+                                            case 'radio':
+
+                                            case 'checkbox':
+                                                $vals = array_filter(preg_split('/[\r\n]+/s', $row['extra']));
+                                                foreach ($vals as &$v) {
+                                                    $v = explode(':', $v);
+                                                }
+                                                echo  '<td >'.$form->selectform($row['field'],$vals,input($row['field'],''),1).'</td>';
+                                                break;
+                                            case 'linkage':
+                                                $valss = array_filter(preg_split('/[\r\n]+/s', $row['extra']));
+                                                $vals=array();
+                                                foreach ($valss as $v) {
+                                                    $v = explode(':', $v);
+                                                    $vals[trim($v[0])]=trim($v[1]);
+                                                }
+                                                echo  '<td >'.$form->linkPage($row,$vals,input($row['field'],'')).'</td>';
+                                                break;
+                                            case 'tablefield':
+                                                $newarray = array();
+                                                $vals = array_filter(preg_split('/[\r\n]+/s', $row['extra']));
+                                                foreach ($vals as &$v) {
+                                                    $v = explode(':', $v);
+                                                    $newarray[trim($v[0])] = $v[1];
+                                                }
+                                                $qlslist = \My\MasterModel::inIt($newarray['db_table'])->field($newarray['primary_key'].','.$newarray['search_field'])->getListData();
+                                                $valus = array();
+                                                foreach ($qlslist as $rows) {
+                                                    $valus[] = array($rows[trim($newarray['primary_key'])], $rows[$newarray['search_field']]);
+                                                }
+                                                echo '<td>'.$form->selectform($row['field'], $valus, input($row['field'],''),1).'</td>';
+                                                break;
+                                            default:
+                                                echo '<td>'.$form->inputform($row['field'],input($row['field'],'')).'</td>';
+                                                break;
+                                        }
+                                        ?>
+
+                                    <?php endif;endforeach;?>
+                                    <?php if($is_search):?>
+                                        <td><button type="submit" class="btn btn-w-m btn-primary">检索</button></td>
+                                    <?php endif;?>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <!--搜索end-->
+                    <div style="height:10px;"></div>
+                    <div class="table-responsive">
+                        <table class="table table-striped" style="border:1px solid #e7eaec">
+                            <thead>
+                            <tr>
+                                <th width="30"><input type="checkbox" class="i-checks i-checksAll" name="input[]"></th>
+                                <?php foreach($field as $rows):?>
+                                    <th>{$rows['name']}</th>
+                                <?php endforeach;?>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($list as $key=>$row):?>
+                                <tr>
+                                    <td><input type="checkbox" value="{$row['id']}" class="i-checks" name="input[]"></td>
+                                    <?php foreach($field as $val):?>
+                                        <td><?php echo $row[$val['field']];?></td>
+                                    <?php endforeach;?>
+
+                                    <td>
+                                        <a href="{:url('edit',array('action'=>'edit','id'=>$row['id'],$cascade_field=>input($cascade_field,0)))}">编辑</a>&nbsp;&nbsp;&nbsp;
+                                        <?php if($cascade_field):?> <a href="{:url('index',array($cascade_field=>$row['id']))}">下级数据</a><?php endif;?>
+                                        &nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="sendGetAjax('{:url('delete',array('id'=>$row['id']))}')">删除</a></td>
+                                </tr>
+                            <?php endforeach;?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php echo $_p;?>
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/admin/js/demo/form-advanced-demo.min.js"></script>
+<script>
+    /*$(function(){
+     qls.cascade('slecteds','area','parent_id',0,{"name":'area_name',"id":"area_id"},'15,16');
+     })*/
+</script>

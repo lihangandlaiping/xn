@@ -1,0 +1,223 @@
+<link href="__PUBLIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+<div class="col-sm-2">
+    <div class="ibox float-e-margins">
+
+        <div class="ibox-content">
+            <div id="treeview1" class="test"></div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-10">
+    <div class="ibox float-e-margins">
+
+        <div class="ibox-content">
+
+
+            <div class="tab-content">
+                <!--基本配置-->
+                <div class="input-append input-group" >
+                    <span class="input-group-btn">
+                        <button class="btn btn-white" type="button">分类</button>
+                    </span>
+                    <select class="form-control" name="class_interface">
+                        <?php foreach($class as $row):?>
+                        <option value="{$row['id']}">{$row['text']}</option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="input-append input-group" >
+                    <span class="input-group-btn">
+                        <button class="btn btn-white" type="button">接口</button>
+                    </span>
+
+                    <select class="form-control" name="interface">
+                        <?php foreach($oneinterf as $row):?>
+                        <option value="{$row['id']}">{$row['face_title']}<?php echo $row['is_ios']==1&&$row['is_android']==1?'(安卓已完成,ios已完成)':($row['is_ios']==1?'(ios已完成)':($row['is_android']==1?'(安卓已完成)':''));?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <p style="clear: both">接口路径：<span id="urldir"><?php echo $oneinterf[0]['href'];?></span></p>
+<div class="row">
+                <div  class="col-sm-5 " >
+                    <div class="panel-body">
+                        <form class="form-horizontal" method="post" action="<?php echo $oneinterf[0]['href'];?>?is_interface_request=true">
+
+                        <div id="interfaceparem">
+
+                        </div>
+                            <input type="hidden" class="form-control" id="is_interface_request_show" name="is_interface_request_show" value="true"  />
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label">是否带字段描述</label>
+                                <div class="col-sm-7">
+                                    <label class="i-checks">
+                                        <div class="iradio_square-green " style="position: relative;"><input checked name="a" type="radio" style="position: absolute; opacity: 0;" value="true"/><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div> <i></i> 是</label>
+                                    <label class="i-checks">
+                                        <div class="iradio_square-green " style="position: relative;"><input name="a" type="radio" style="position: absolute; opacity: 0;" value="false"/><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div> <i></i> 否</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-1">
+                                    <button class="btn btn-primary submitformsd"  type="button">确定</button>
+                                    <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="result1" style=" top: 1%; right: 8px;  margin: 0; padding: 0;  border:1px solid skyblue; background: #f8f8f8; line-height: 1.2em; font-size: 14px; cursor: pointer;">
+                            <label>当前结果</label>
+                            <pre style=" width: 100%; height: 100%; overflow: scroll; overflow-x: scroll; overflow-y:scroll">
+
+                            </pre>
+                        </div>
+                    </div>
+
+                </div>
+
+    <div id="result2" class="col-sm-7" style=" top: 1%; right: 8px;  margin: 0; padding: 0;  border:1px solid skyblue; background: #f8f8f8; line-height: 1.2em; font-size: 14px; cursor: pointer;">
+        <label>历史结果</label>
+<pre style=" width: 100%; height: 100%; overflow: scroll; overflow-x: scroll; overflow-y:scroll"><?php echo $oneinterf[0]["values"];?></pre>
+    </div>
+</div>
+                <!--基本配置 END-->
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function loadparem(face_id)
+    {
+        qls.loading();
+        $('#interfaceparem').load('<?php echo url("interfaceparem");?>?face_id='+face_id,function(){
+            qls.close();
+        });
+    }
+   function selectinterface(obj)
+   {
+       var data=$(obj).attr('datas');
+       if(data=='#')return false;
+       try
+       {
+           var arr=data.split(',');
+       }catch(e)
+       {
+           return false;
+       }
+
+       $('select[name="class_interface"] option[value="'+arr[0]+'"]').prop('selected',true);
+       qls.loading();
+       $.post('<?php echo url('classgetinterface');?>',{class_id:arr[0]},function(data){
+       if(data!=null)
+       {
+           var html='';
+           $.each(data,function(i,n){
+               var anios= n.is_android==1?'(安卓已完成':'';
+               if(n.is_ios==1)
+               {
+                   if(anios!='')anios+=',ios已完成)';
+                   else anios+='(ios已完成)';
+               }
+               else
+               {
+                   if(anios!='')anios+=')';
+                   else anios+='';
+               }
+               html+='<option value="'+ n.id+'">'+ n.face_title+anios+'</option>';
+           })
+           $('select[name="interface"]').html(html);
+       }
+       $('select[name="interface"] option[value="'+arr[1]+'"]').prop('selected',true);
+       var id=arr[1];
+       $.post('<?php echo url('getinterfacevalus');?>',{id:id},function(data){
+           if(data!=null)
+           {
+               $('#result2 pre').html(data.values?data.values:'');
+               $('#urldir').html(data.href?data.href:'');
+               $('form.form-horizontal').attr('action',data.href+'?is_interface_request=true');
+           }
+           loadparem(id);
+       },'json');
+       $('#result1 pre').html('');
+   },'json');
+
+   }
+</script>
+<script src="__PUBLIC__/admin/js/plugins/treeview/bootstrap-treeview.js?t=4"></script>
+<script src="__PUBLIC__/admin/js/jsonformat.js?t=5"></script>
+<script>
+    var e = '<?php echo $data;?>';
+    $("#treeview1").treeview({
+        data: e
+    });
+
+    $(function(){
+        $('.i-checks').click(function(){
+            $('#is_interface_request_show').val($(this).find('input[type="radio"]').val());
+        });
+        /**
+         * 选择分类
+         */
+        $('select[name="class_interface"]').change(function(){
+            qls.loading();
+            $.post('<?php echo url('classgetinterface');?>',{class_id:$(this).val()},function(data){
+                qls.close();
+                if(data!=null)
+                {
+                    var html='';
+                    $.each(data,function(i,n){
+                        html+='<option value="'+ n.id+'">'+ n.face_title+'</option>';
+                    })
+                    $('select[name="interface"]').html(html);
+                }
+            },'json');
+        });
+        /**
+         * 接口
+         */
+        $('select[name="interface"]').change(function(){
+            var id=$(this).val();
+            qls.loading();
+            $.post('<?php echo url('getinterfacevalus');?>',{id:id},function(data){
+                if(data!=null)
+                {
+                    $('#result2 pre').html(data.values?data.values:'');
+                    $('#urldir').html(data.href?data.href:'');
+                    $('form.form-horizontal').attr('action',data.href+'?is_interface_request=true');
+                }
+                loadparem(id);
+            },'json');
+
+            $('#result1 pre').html('');
+        });
+        $('.submitformsd').click(function(){
+            var ser=$('form.form-horizontal').serialize();
+            qls.loading();
+            $.ajax(
+                    { type: 'POST',
+                url: $('form.form-horizontal').attr('action') ,
+                data: ser ,
+                success:function(response){
+                    qls.close();
+                    try{
+                        var j = new JSONFormat(JSON && JSON.parse ? JSON.parse(response) : eval('(' + response + ')'));
+                        $('#result1 pre').html(j.toString());
+                        $.post('<?php echo url('addInterfaceValues');?>',{values:j.toString(),id:$('select[name="interface"]').val()});
+                    }catch (e){
+                        $('#result1 pre').html(response);
+                    }
+                },error:function(event){
+                    qls.close();
+                    $('#result1 pre').html(event.responseText);
+
+                }
+            }
+            )
+
+        });
+        loadparem('<?php echo $oneinterf[0]["id"];?>');
+
+    });
+
+</script>
+

@@ -1,0 +1,105 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{$menuTitle}</h5>
+                </div>
+                <div class="ibox-content">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">基本</a> </li>
+                        <!--  <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">扩展</a> </li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <!--基本配置-->
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form class="form-horizontal" method="post" action="">
+
+                                    <div class="hr-line-dashed"></div>
+                                    <?php for($i=0;$i<10;$i++):?>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label">参数标识</label>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-control"  name="data[{$i}][name]"   />
+
+                                        </div>
+
+                                        <label class="col-sm-1 control-label">参数名称</label>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-control" name="data[{$i}][title]"  />
+
+                                        </div>
+
+                                        <label class="col-sm-1 control-label">默认值</label>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-control" name="data[{$i}][default]"  />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+
+                                        <label class="col-sm-1 control-label">验证方式</label>
+                                        <div class="col-sm-1">
+                                            <select name="data[{$i}][sy_vilid]" class="form-control">
+                                                <option value="">--请选择--</option>
+                                                <option  value="2">非空验证</option>
+                                                <option value="3">手机号验证</option>
+                                                <option  value="4">邮箱验证</option>
+                                                <option  value="5">数字验证</option>
+                                                <option  value="6">json验证</option>
+
+                                            </select>
+                                        </div>
+
+
+                                        <label class="col-sm-1 control-label">验证错误提示</label>
+                                        <div class="col-sm-1">
+                                            <input type="text" class="form-control" name="data[{$i}][error_tip]" />
+                                            <span class="help-block m-b-none"></span>
+                                        </div>
+                                    </div>
+                                    <?php endfor;?>
+
+
+
+
+
+
+
+
+                                    <div class="hr-line-dashed"></div>
+
+                                    <input type="hidden" name="interface" value="<?php echo $_GET['interface']?:($info['face_id']?:'');?>"/>
+                                    <input type="hidden" name="action" value="<?php echo $_GET['action'];?>"/>
+                                    <input type="hidden" name="id" value="<?php echo $info['id'];?>"/>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <button class="btn btn-primary submitform" type="button">确定</button>
+                                            <button class="btn btn-white" type="button" onclick="javascript:window.history.go(-1);">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--基本配置 END-->
+
+                        <!--扩展-->
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-4 ">
+                                            <button class="btn btn-primary" type="submit">确定</button>
+                                            <button class="btn btn-white" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--扩展 END-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
