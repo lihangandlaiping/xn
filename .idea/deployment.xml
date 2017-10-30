@@ -5,8 +5,7 @@
       <paths name="ali">
         <serverdata>
           <mappings>
-            <mapping deploy="/xianvu" local="$PROJECT_DIR$" web="/" />
-            <mapping local="" />
+            <mapping deploy="/xianvu" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

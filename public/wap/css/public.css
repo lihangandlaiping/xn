@@ -1607,6 +1607,16 @@ div.addr_active{
     font-size: 34px;
 }
 
+.footerbutton1 button {
+    height: 70px;
+    line-height: 70px;
+    font-size: 29px;
+    color: #ffffff;
+    background: #f84e25;
+    width: 100%;
+    border: 0;
+}
+
 
 
 

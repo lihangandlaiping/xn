@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/jquery-weui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/weui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/common.css"/>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-weui.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/vue.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/alert.css">
+    <script type="text/javascript" src="__PUBLIC__/wap/js/alert.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <style type="text/css">
+        body {
+            background: #f2f2f2;
+            padding-bottom: 49px;
+        }
+
+        .weui-cells {
+            margin-top: 0;
+        }
+
+        .weui-cell {
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .weui-cell__hd {
+            font-size: 15px;
+            color: #333333;
+        }
+
+        .weui-cell__bd {
+            font-size: 15px;
+            color: #333333;
+        }
+
+        .weui-cell__ft img {
+            height: 20px;
+        }
+
+        .weui-cell__bd input {
+            height: 24px;
+            line-height: 24px;
+            width: 100%;
+            border-width: 1px 0;
+            border-radius: 3px;
+            padding-left: 3px;
+            font-size: 15px;
+        }
+
+        .weui-cell:before {
+            display: none;
+        }
+
+        .weui-cell__hd img {
+            width: 90px;
+            height: 90px;
+            border: 1px solid #cccccc;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="weui-cells">
+        <div class="weui-cell" id="sys">
+            <div class="weui-cell__hd"><label class="weui-label">商品条码：</label></div>
+            <div class="weui-cell__bd"><input class="weui-input" id="isbn" v-model="isbn"/></div>
+            <div class="weui-cell__ft"><img src="__PUBLIC__/wap/img/icon_Scan.png"/>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">商品名称：</label></div>
+            <div class="weui-cell__bd"><input class="weui-input" v-model="goods_name" value="" disabled="disabled"
+                                              style="color: #999999;background: #eaeaea;"/></div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">商品价格：</label></div>
+            <div class="weui-cell__bd"><input class="weui-input" v-model="price" value="" disabled="disabled"
+                                              style="color: #999999;background: #eaeaea;"/></div>
+        </div>
+    </div>
+    <div class="weui-cells" style="margin-top: 9px;">
+        <div class="weui-cell">
+            <div class="weui-cell__hd">订单号：</div>
+            <div class="weui-cell__bd">{{order_sn}}</div>
+        </div>
+    </div>
+    <div  v-show="is_show">
+        <div class="weui-cells" style="border-bottom: 1px solid #D0D0D0;" v-for="(goods,key) in goods_list">
+            <div class="weui-cell buygoods" v-on:click="update_goods_num(key)">
+                <div class="weui-cell__hd" style="margin-top: -15px;"><img v-bind:src="goods.goods_logo"/></div>
+                <div class="weui-cell__bd">
+                    <div class="wxmall-index-content-goods-name" style="font-size: 14px;">{{goods.goods_name}}</div>
+                    <div class="exchange-record-goods-num">
+                        X {{goods.num}}
+                    </div>
+                    <div class="exchange-record-integral-num">
+                        金额：<span>{{goods.price}} ¥</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="all-consumption">
+        <div class="all-consumption-num">合计消费：<span>{{total_money}} ¥</span></div>
+    </div>
+    <div class="footerbutton1" id="sub_order">
+        <button>确认</button>
+    </div>
+</div>
+<script>
+    var root_url = '{:__ROOT__}';
+    var goods_ids = [];
+    var obj = new Vue({
+        el: '#app',
+        data: {
+            is_show: false,
+            goods_name: '',
+            price: '',
+            isbn: '',
+            order_sn: '{$order_sn}',
+            total_money: '0.00',
+            goods_list: []
+        },
+        methods: {
+            update_goods_num: function (key) {
+                var goods_num = obj.goods_list[key].num;
+                var new_num = prompt('请输入购买数量', goods_num);
+                var info=obj.goods_list[key];
+                if(new_num==='0'){
+                    var id_key = $.inArray(info.id, goods_ids);
+                    goods_ids.splice(id_key,1);
+                    obj.goods_list.splice(key,1);
+                }else if(!isNaN(new_num) && (new_num>0)){
+                    info.num=new_num;
+                }else {
+                    return false;
+                }
+                var money=(new_num-goods_num)*info.price;
+                obj.total_money = (obj.total_money * 1) + money ;
+                obj.total_money = obj.total_money.toFixed(2);
+            }
+        }
+    });
+
+    $(function () {
+//        wx.config({
+//            debug: false,
+//            appId: "{$js_config['app_id']}",
+//            timestamp: "{$js_config['timestamp']}",
+//            nonceStr: "{$js_config['noncestr']}",
+//            signature: "{$js_config['signature']}",
+//            jsApiList: [
+//                'scanQRCode'
+//            ]
+//        });
+//        $('#sys').click(function () {
+//            wx.scanQRCode({
+//                needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+//                scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+//                success: function (res) {
+//                    var str_num = res.resultStr.indexOf(',');
+//                    var str = res.resultStr.substring(str_num * 1 + 1);
+//                    qq_alert('数据加载中...', 'loading');
+//                    getGoodsInfo(str);
+//                }
+//            });
+//        });
+
+        $('#isbn').blur(function () {
+            var isbn = $(this).val();
+            getGoodsInfo(isbn);
+        });
+
+        /**
+         * 提交订单信息
+         */
+        $('#sub_order').click(function () {
+            qq_alert('数据加载中...', 'loading');
+            $.post('{:url()}', obj.data, function (data) {
+                remove_qq_alert();
+                qq_alert(data.msg);
+                if (data.code == '1') {
+
+                }
+            }, 'json')
+        });
+    });
+
+
+    /**
+     * 获取商品详情
+     * @param isbn
+     */
+    function getGoodsInfo(isbn) {
+        remove_qq_alert();
+        if (isbn == '') {
+            return false;
+        }
+        $.get('{:url("getGoodsInfo")}', {
+            isbn: isbn
+        }, function (data) {
+            if (data.code == '1') {
+                obj.is_show = true;
+                var goods_info = data.data;
+                obj.goods_name = goods_info.goods_name;
+                obj.price = goods_info.price;
+                var leng = goods_ids.length;
+                var key = $.inArray(goods_info.id, goods_ids);
+                if (leng > 0 && ( key >= 0)) {
+                    ++obj.goods_list[key].num;
+                } else {
+                    goods_info.goods_logo = root_url + goods_info.goods_logo;
+                    goods_info.num = 1;
+                    obj.goods_list.push(goods_info);
+                    goods_ids[leng] = goods_info.id;
+                }
+                obj.total_money = (obj.total_money * 1) + obj.price * 1;
+                obj.total_money = obj.total_money.toFixed(2);
+                obj.isbn = '';
+            } else {
+                qq_alert(data.msg);
+            }
+        }, 'json')
+    }
+</script>
+</body>
+</html>
