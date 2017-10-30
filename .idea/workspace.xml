@@ -2,55 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a35cbec3-9331-49bb-b03a-d9f2c99197f9" name="默认" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Exchange record _icon_shop.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Img_bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Index_bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Index_bg2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Index_img.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Index_img1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Index_img2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Index_img4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/My_icon_.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/My_icon_Exchange record.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/My_icon_Vip card.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Record_img.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Tab_icon_index.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/Tab_icon_my.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/details_img.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/goods-detail.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/icon_Scan.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/img/wx-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/order/view/payorder_home/add_goods_order.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/css/jquery-weui.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/css/swiper-3.4.2.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/css/weui.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/colorbox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/contact.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/custom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/dropload.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/framework.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/framework.launcher.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/framework.plugins.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/jquery-2.1.4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/jquery-2.2.3.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/jquery-weui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/jquery.menu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/jquery.qrcode.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/jquery.swipebox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/jqueryui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/owl.carousel.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/popups.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/snap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/swiper-3.4.2.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wap/js/vue.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/order/view/payorder_home/get_order_info.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/controller/Payorder_home.php" afterPath="$PROJECT_DIR$/application/order/controller/Payorder_home.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/view/payorder_home/index.html" afterPath="$PROJECT_DIR$/application/order/view/payorder_home/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/wap/css/common.css" afterPath="$PROJECT_DIR$/public/wap/css/common.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/wap/css/public.css" afterPath="$PROJECT_DIR$/public/wap/css/public.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/wap/js/alert.js" afterPath="$PROJECT_DIR$/public/wap/js/alert.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/view/payorder_home/add_goods_order.html" afterPath="$PROJECT_DIR$/application/order/view/payorder_home/add_goods_order.html" />
     </list>
     <ignored path="xianvu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,20 +29,52 @@
       <file leaf-file-name="Payorder_home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/order/controller/Payorder_home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+            <state relative-caret-position="347">
+              <caret line="75" column="7" selection-start-line="75" selection-start-column="7" selection-end-line="75" selection-end-column="7" />
               <folding>
-                <element signature="e#71#104#0#PHP" expanded="true" />
+                <element signature="e#72#104#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_goods_order.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="get_order_info.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/order/view/payorder_home/get_order_info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#a#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Payorder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/order/model/Payorder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Memberorder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/order/model/Memberorder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_goods_order.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/order/view/payorder_home/add_goods_order.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
+            <state relative-caret-position="2784">
+              <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -119,6 +106,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -146,8 +140,9 @@
         <option value="$PROJECT_DIR$/application/order/view/payorder_home/index.html" />
         <option value="$PROJECT_DIR$/application/database.php" />
         <option value="$PROJECT_DIR$/public/wap/css/public.css" />
-        <option value="$PROJECT_DIR$/application/order/controller/Payorder_home.php" />
         <option value="$PROJECT_DIR$/application/order/view/payorder_home/add_goods_order.html" />
+        <option value="$PROJECT_DIR$/application/order/controller/Payorder_home.php" />
+        <option value="$PROJECT_DIR$/application/order/view/payorder_home/get_order_info.html" />
       </list>
     </option>
   </component>
@@ -381,6 +376,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xianvu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xianvu" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="order" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -418,6 +435,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -489,18 +507,18 @@
       <workItem from="1508826687317" duration="11147000" />
       <workItem from="1508893291441" duration="16000" />
       <workItem from="1509342031347" duration="783000" />
-      <workItem from="1509342890045" duration="9354000" />
+      <workItem from="1509342890045" duration="12290000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21300000" />
+    <option name="totallyTimeSpent" value="24236000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15671642" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15671642" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -537,30 +555,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/wap/js/alert.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/wap/css/alert.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/extend/Home/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2080">
@@ -582,7 +576,7 @@
         <state relative-caret-position="1248">
           <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
           <folding>
-            <element signature="e#71#104#0#PHP" expanded="true" />
+            <element signature="e#72#104#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -845,14 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/thinkphp/library/traits/controller/Jump.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/wap/js/vue.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -918,22 +904,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/order/model/Memberorder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/order/model/Payorder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/thinkphp/library/traits/controller/Jump.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1824">
+          <caret line="74" column="23" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/order/controller/Payorder_home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+        <state relative-caret-position="347">
+          <caret line="75" column="7" selection-start-line="75" selection-start-column="7" selection-end-line="75" selection-end-column="7" />
           <folding>
-            <element signature="e#71#104#0#PHP" expanded="true" />
+            <element signature="e#72#104#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/order/view/payorder_home/add_goods_order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
+        <state relative-caret-position="2784">
+          <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/order/view/payorder_home/get_order_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#a#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

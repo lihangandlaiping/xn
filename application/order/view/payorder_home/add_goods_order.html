@@ -181,11 +181,11 @@
          */
         $('#sub_order').click(function () {
             qq_alert('数据加载中...', 'loading');
-            $.post('{:url()}', obj.data, function (data) {
+            $.post('{:url()}', {'total_money':obj.total_money,'order_sn':obj.order_sn,'goods_list':obj.goods_list}, function (data) {
                 remove_qq_alert();
                 qq_alert(data.msg);
                 if (data.code == '1') {
-
+                    location.href=data.url;
                 }
             }, 'json')
         });
