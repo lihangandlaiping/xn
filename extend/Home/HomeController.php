@@ -9,10 +9,17 @@ namespace Home;
 use My\MasterController;
 use My\MasterModel;
 use think\Config;
+use wx_model\Weixinmodel;
 
 class HomeController extends MasterController
 {
     protected $model_name='';//数据库表名
+    /**
+     * 微信对象
+     * @var \wx_model\Weixinmodel
+     */
+    protected $wx_model='';
+    protected $wx_user_info='';
     function __construct()
     {
         parent::__construct();
@@ -20,6 +27,31 @@ class HomeController extends MasterController
         $this->_redyConfig();
         //分页设置
         $this->pageSize=config('admin_page_size')?:$this->pageSize;
+        $this->getUserWxInfo();
+    }
+
+    /**
+     * 获取微信信息
+     */
+    protected function getUserWxInfo(){
+        $this->wx_user_info=session('wx_user_info');
+        if(empty($this->wx_user_info)){
+            $this->creationWxModel();
+            $this->wx_user_info=$this->wx_model->authorize();
+            if(empty($this->wx_user_info))$this->error('获取信息失败');
+            session('wx_user_info',$this->wx_user_info);
+        }
+    }
+
+    /**
+     * 创建微信操作对象
+     */
+    protected function creationWxModel(){
+        if(empty($this->wx_model) || !is_object($this->wx_model)){
+            vendor('weixin/Weixinmodel');
+            $wx_config=config('wx_config');
+            $this->wx_model=new Weixinmodel($wx_config['appid'],$wx_config['appsecret']);
+        }
     }
 
     /**

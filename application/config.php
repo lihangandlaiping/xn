@@ -224,4 +224,10 @@ return [
     //父类模板路径
     'parent_temple'=>'',
     'temple_cache'=>false,//模板缓存控制
+    'wx_config'=>[
+        'private_key'=>'',
+        'appid'=>'wxab2dda3612ed50d4',
+        'mch_id'=>'gh_28209116ee16',
+        'appsecret'=>'c969e09896120a8f937ef7f37466f9e6',
+    ]
 ];

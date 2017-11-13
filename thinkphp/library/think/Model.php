@@ -930,8 +930,8 @@ abstract class Model implements \JsonSerializable, \ArrayAccess
     public static function update($data = [], $where = [])
     {
         $model = new static();
-        $model->isUpdate(true)->save($data, $where);
-        return $model;
+        $row=$model->isUpdate(true)->save($data, $where);
+        return $row;
     }
 
     /**

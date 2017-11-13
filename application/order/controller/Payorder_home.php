@@ -15,7 +15,10 @@ class PayorderHome extends HomeController
 {
     protected $model_name = 'pay_order';
     protected $member_info = ['id' => '4'];
-
+    /**
+     * @var \app\order\model\Memberorder
+     */
+    protected $member_order_obj='';
     function __construct()
     {
         parent::__construct();
@@ -70,7 +73,27 @@ class PayorderHome extends HomeController
      * 会员确认订单详情
      */
     function memberAffirmOrderInfo(){
-
+        $order_sn=input('order_sn','');
+        if(empty($order_sn))$this->error('订单号不合法');
+        $goods_list=MasterModel::inIt('pay_order')->field('id,order_sn,price,amount_money,goods_name,pay_num,goods_id,img')->getListData(['member_id'=>$this->member_info['id'],'order_sn'=>$order_sn]);
+        if(empty($goods_list))$this->error('当前订单不存在');
+        if(Request::instance()->isPost()){
+            $row=MasterModel::inIt('pay_order')->updateData(['status'=>'2','pay_status'=>'2'],['status'=>'1','member_id'=>$this->member_info['id'],'order_sn'=>$order_sn]);
+            if($row){
+                if(empty($this->member_order_obj) || !is_object($this->member_order_obj)){
+                    $this->member_order_obj=new Memberorder();
+                }
+                $ids=$this->member_order_obj->setUserGoodsInfo($goods_list,$this->member_info['id']);
+            }
+            if(empty($ids)){
+                $this->error('当前订单已确认');
+            }else{
+                $this->success('订单确认成功');
+            }
+        }else{
+            $order_info=['order_sn'=>$goods_list[0]['order_sn'],'amount_money'=>$goods_list[0]['amount_money']];
+            return view('member_affirm_order_info', ['goods_list' => $goods_list,'order_info'=>$order_info]);
+        }
     }
 
     /**

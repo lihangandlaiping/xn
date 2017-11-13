@@ -70,6 +70,28 @@ class Memberorder extends MasterModel
     {
         return parent::deleteData($where);
     }
+
+    /**
+     * 添加库存数量
+     * @param $goods_list
+     * @param $member_id
+     * @return array
+     */
+    function setUserGoodsInfo($goods_list,$member_id){
+        $ids=[];
+        foreach ($goods_list as $goods){
+            $member_order_id=MasterModel::inIt('member_order')->where(['goods_id'=>$goods['goods_id'],'member_id'=>$member_id])->value('id');
+            if(empty($member_order_id)){
+                $row=['member_id'=>$member_id,'goods_id'=>$goods['goods_id'],'goods_name'=>$goods['goods_name'],'img'=>$goods['img'],'surplus_num'=>$goods['pay_num'],'add_time'=>time(),'update_time'=>time()];
+                $ids[]=MasterModel::inIt('member_order')->insertData($row);
+            }else{
+                $ids[]=$member_order_id;
+                MasterModel::inIt('member_order')->where(['goods_id'=>$goods['goods_id'],'member_id'=>$member_id])->setInc('surplus_num',$goods['pay_num']);
+                MasterModel::inIt('member_order')->updateData(['update_time'=>time()],['goods_id'=>$goods['goods_id'],'member_id'=>$member_id]);
+            }
+        }
+        return $ids;
+    }
 }
 
 ?>

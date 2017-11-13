@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/jquery-weui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/weui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/common.css"/>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-weui.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/vue.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/alert.css">
+    <script type="text/javascript" src="__PUBLIC__/wap/js/alert.js"></script>
+    <style type="text/css">
+        body {
+            background: #f2f2f2;
+            padding-bottom: 49px;
+        }
+
+        .weui-cells {
+            margin-top: 0;
+        }
+
+        .weui-cell {
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .weui-cell__hd {
+            font-size: 15px;
+            color: #333333;
+        }
+
+        .weui-cell__bd {
+            font-size: 15px;
+            color: #333333;
+        }
+
+        .weui-cell__ft img {
+            height: 20px;
+        }
+
+        .weui-cell__bd input {
+            height: 24px;
+            line-height: 24px;
+            width: 100%;
+            border-width: 1px 0;
+            border-radius: 3px;
+            padding-left: 3px;
+            font-size: 15px;
+        }
+
+        .weui-cell:before {
+            display: none;
+        }
+
+        .weui-cell__hd img {
+            width: 90px;
+            height: 90px;
+            border: 1px solid #cccccc;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="weui-cells" style="margin-top: 9px;">
+        <div class="weui-cell">
+            <div class="weui-cell__hd">订单号：</div>
+            <div class="weui-cell__bd">{{order_info.order_sn}}</div>
+        </div>
+    </div>
+    <div >
+        <div class="weui-cells" style="border-bottom: 1px solid #D0D0D0;" v-for="(goods,key) in goods_list">
+            <div class="weui-cell buygoods" >
+                <div class="weui-cell__hd" style="margin-top: -15px;"><img v-bind:src="goods.img"/></div>
+                <div class="weui-cell__bd">
+                    <div class="wxmall-index-content-goods-name" style="font-size: 14px;">{{goods.goods_name}}</div>
+                    <div class="exchange-record-goods-num">
+                        X {{goods.num}}
+                    </div>
+                    <div class="exchange-record-integral-num">
+                        金额：<span>{{goods.price}} ¥</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="all-consumption">
+        <div class="all-consumption-num">合计消费：<span>{{order_info.amount_money}} ¥</span></div>
+    </div>
+    <div class="footerbutton1" id="sub_order">
+        <button>确认</button>
+    </div>
+</div>
+<script>
+    var root_url = '{:__ROOT__}';
+    var order_info={:json_encode($order_info)};
+    var goods_list={:json_encode($goods_list)};
+    var obj = new Vue({
+        el: '#app',
+        data: {
+            order_info: order_info,
+            root_url: root_url,
+            goods_list: goods_list
+        },
+        methods: {
+
+        }
+    });
+
+    $(function () {
+        /**
+         * 提交订单信息
+         */
+        $('#sub_order').click(function () {
+            qq_alert('数据加载中...', 'loading');
+            $.post('{:url()}', {'order_sn':obj.order_info.order_sn}, function (data) {
+                remove_qq_alert();
+                qq_alert(data.msg);
+                if (data.code == '1') {
+                    location.href=data.url;
+                }
+            }, 'json')
+        });
+    });
+
+
+
+</script>
+</body>
+</html>
