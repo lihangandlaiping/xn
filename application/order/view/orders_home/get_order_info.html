@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/jquery-weui.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/weui.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/common.css" />
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-2.1.4.js" ></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-weui.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery.qrcode.min.js"></script>
+</head>
+<body>
+<div class="qrcord"></div>
+<div class="qrcord-title">确认二维码</div>
+<div class="qrcord-code">服务项:{$order_info.order_sn}</div>
+<div class="qrcord-code">订单号:{$order_info.order_title}</div>
+<div class="qrcord-receipt-status"><?php echo ($order_info['status']=='1')?'未确认':'已完成'?></div>
+<div class="footerbutton2">
+    <a href="{:url('setOrderTitle')}"><button style="background: #f84e25;width: 100%"><span>返回上一页</span></button></a>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $(".qrcord").qrcode({
+            text:"{$affirm_url}",
+            width:148,
+            height:148
+        });
+    })
+</script>
+</body>
+</html>

@@ -14,7 +14,7 @@ use think\Request;
 class PayorderHome extends HomeController
 {
     protected $model_name = 'pay_order';
-    protected $member_info = ['id' => '4'];
+
     /**
      * @var \app\order\model\Memberorder
      */
@@ -53,7 +53,9 @@ class PayorderHome extends HomeController
                 $this->num_obj = new Numberrecord();
             }
             $pay_order_sn = $this->num_obj->getAddNum('2');
-            return view('add_goods_order', ['order_sn' => $pay_order_sn]);
+            $this->creationWxModel();
+            $js_config=$this->wx_model->get_js_config(1);
+            return view('add_goods_order', ['order_sn' => $pay_order_sn,'js_config'=>$js_config]);
         }
     }
 

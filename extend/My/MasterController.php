@@ -10,7 +10,7 @@ namespace My;
 
 class MasterController extends \think\Controller
 {
-    protected $pageSize=20;
+    protected $pageSize=10;
     function __construct()
     {
         parent::__construct();

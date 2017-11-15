@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/jquery-weui.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/weui.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/common.css" />
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-2.1.4.js" ></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-weui.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/vue.min.js"></script>
+</head>
+<body>
+<div class="qrcord-code"><h3>选择手工服务</h3></div>
+<div class="" id="app">
+    <div class="weui-cells weui-cells_checkbox">
+        <label class="weui-cell weui-check__label" v-bind:for="['s'+key]"   v-for="(nursing,key) in list">
+            <div class="weui-cell__hd">
+                <input type="checkbox" name="nursing_id" class="weui-check" @click.stop="setNursingId(key)" v-bind:id="['s'+key]" >
+                <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+                <p>{{nursing.name}}</p>
+            </div>
+        </label>
+    </div>
+</div>
+<div class="footerbutton2">
+    <button style="background: #f84e25;width: 100%"><span>确定</span></button>
+</div>
+<script type="text/javascript">
+    var list={:json_encode($list)};
+    var ids=[];
+    var obj = new Vue({
+        el: '#app',
+        data: {
+            list: list
+        },
+        methods: {
+            setNursingId:function (key) {
+                var id=list[key].id;
+                var id_key=$.inArray(id,ids);
+                if(id_key>-1){
+                    ids.splice(id_key,1);
+                }else {
+                    var length=ids.length;
+                    ids[length]=id;
+                }
+                return false;
+            }
+        }
+    });
+    $('.footerbutton2').click(function () {
+        var length=ids.length;
+        if(length<1){
+            qq_alert('请选择手工项');
+            return false;
+        }
+        var nursing_ids=ids.toString();
+        location.href="{:url('addOrder',[],true,true)}?nursing_ids="+nursing_ids;
+    });
+
+</script>
+</body>
+</html>

@@ -4,39 +4,49 @@
  * User: qls
  */
 namespace app\order\controller;
+
 use Home\HomeController;
 use My\MasterModel;
 
 class MemberorderHome extends HomeController
 {
-    protected $model_name='member_order';
+    protected $model_name = 'member_order';
+
     function __construct()
     {
         parent::__construct();
         config('parent_temple', '');
     }
-     /**
+
+    /**
      * 数据列表 $_p 为分页数据
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
      */
     function index()
     {
-        $where=array();$field='*';$order='';$group='';$join=array();
-       $list= $this->getListData($this->model_name,$where,$field,$order,$group,$join);
-        $this->display('list',$list);
-        return view('index');
+        $where = array('member_id'=>$this->member_info['id']);
+        $field = '*';
+        $order = 'update_time desc';
+        $group = '';
+        $join = array();
+        $list = $this->getListData($this->model_name, $where, $field, $order, $group, $join);
+        return view('index',['goods_list'=> $list,'is_list'=> count($list),'member_info'=> $this->wx_user_info]);
     }
 
-    /**
-     * 单条数据详情
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
-     */
-    function show()
-    {
-        $where=array();$field='*';$order='';$group='';$join=array();
-        $info=MasterModel::inIt($this->model_name)->field($field)->getOne($where,$order,$group,$join);
-        $this->display('info',$info);
-        return view('details');
+    function ajaxMemberOrderList(){
+        $where = array('member_id'=>$this->member_info['id']);
+        $field = '*';
+        $order = 'update_time desc';
+        $group = '';
+        $join = array();
+        $list = $this->getListData($this->model_name, $where, $field, $order, $group, $join);
+        if($list){
+            $this->success('获取信息成功','',$list);
+        }else{
+            $this->error('已到最后一页');
+        }
+
     }
+
 
 }

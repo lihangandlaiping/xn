@@ -6,6 +6,7 @@
  * Time: 17:19
  */
 namespace Home;
+use app\member\model\Member;
 use My\MasterController;
 use My\MasterModel;
 use think\Config;
@@ -19,7 +20,9 @@ class HomeController extends MasterController
      * @var \wx_model\Weixinmodel
      */
     protected $wx_model='';
+    protected $member_info = '';
     protected $wx_user_info='';
+    protected $member_model='';
     function __construct()
     {
         parent::__construct();
@@ -35,12 +38,21 @@ class HomeController extends MasterController
      */
     protected function getUserWxInfo(){
         $this->wx_user_info=session('wx_user_info');
+        $this->member_info=session('member_info');
         if(empty($this->wx_user_info)){
             $this->creationWxModel();
             $this->wx_user_info=$this->wx_model->authorize();
             if(empty($this->wx_user_info))$this->error('获取信息失败');
             session('wx_user_info',$this->wx_user_info);
         }
+        if(empty($this->member_info)){
+            if(empty($this->member_model) || !is_object($this->member_model)){
+                $this->member_model=new Member();
+            }
+            $this->member_info=$this->member_model->getMemberInfo($this->wx_user_info);
+            session('member_info',$this->member_info);
+        }
+        if(empty($this->member_info))$this->error('会员信息不存在');
     }
 
     /**
@@ -101,6 +113,8 @@ class HomeController extends MasterController
         $list=$model->field($field)->getListData($where,$order,$group,$join,$limit);
         return $list;
     }
+
+
 
 
 

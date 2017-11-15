@@ -77,17 +77,18 @@
                 <div class="weui-cell__bd">
                     <div class="wxmall-index-content-goods-name" style="font-size: 14px;">{{goods.goods_name}}</div>
                     <div class="exchange-record-goods-num">
-                        X {{goods.pay_num}}
+                        使用数量： X {{goods.to_num}}
                     </div>
                     <div class="exchange-record-integral-num">
-                        金额：<span>{{goods.price}} ¥</span>
+                        库存数量：<span>{{goods.surplus_num}} </span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="all-consumption">
-        <div class="all-consumption-num">合计消费：<span>{{order_info.amount_money}} ¥</span></div>
+        <div class="all-consumption-num"></div>
+        <!--<div class="all-consumption-num">合计消费：<span> ¥</span></div>-->
     </div>
     <div class="footerbutton1" id="sub_order">
         <button>确认</button>
@@ -96,7 +97,7 @@
 <script>
     var root_url = '{:__ROOT__}';
     var order_info={:json_encode($order_info)};
-    var goods_list={:json_encode($goods_list)};
+    var goods_list={:json_encode($order_item)};
     var obj = new Vue({
         el: '#app',
         data: {
@@ -115,7 +116,7 @@
          */
         $('#sub_order').click(function () {
             qq_alert('数据加载中...', 'loading');
-            $.post('{:url()}', {'order_sn':obj.order_info.order_sn}, function (data) {
+            $.post('{:url()}', {'order_id':obj.order_info.id}, function (data) {
                 remove_qq_alert();
                 qq_alert(data.msg);
                 if (data.code == '1') {

@@ -29,7 +29,7 @@ html,body{width: 100%;}
 .goods-detail-detail-img{padding: 10px 0 37px;border-top: 1px solid #cccccc;margin-top: 10px;}
 .goods-detail-detail-img img{width: 100%;}
 
-.my-index-header{width: 100%;height: 150px;background: url(../../img/integral_shop/Img_bg.jpg);background-size:100% 150px;}
+.my-index-header{width: 100%;height: 150px;background: url(../img/Img_bg.jpg);background-size:100% 150px;}
 .my-logo{float: left;width:59px;height:59px;margin: 20px 0 0 15px;}
 .my-logo img{width:59px;height:59px;border-radius: 29.5px;}
 .my-index-name{font-size: 17px;color: #ffffff;}

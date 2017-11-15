@@ -70,6 +70,13 @@ class Orderitem extends MasterModel
     {
         return parent::deleteData($where);
     }
+
+    function setMemberOrderGoodsNum($order_id){
+        $list=MasterModel::inIt('order_item')->field('member_order_id,to_num')->getListData(['order_id'=>$order_id]);
+        foreach ($list as $value){
+            MasterModel::inIt('member_order')->where(['id'=>$value['member_order_id']])->setDec('surplus_num',$value['to_num']);
+        }
+    }
 }
 
 ?>

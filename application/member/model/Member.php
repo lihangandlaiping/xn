@@ -70,6 +70,20 @@ class Member extends MasterModel
     {
         return parent::deleteData($where);
     }
+
+    /**
+     * 获取会员信息
+     * @param $wx_user_info
+     * @return array|mixed
+     */
+    function getMemberInfo($wx_user_info){
+        $member_info=MasterModel::inIt('member')->getOne(['openid'=>$wx_user_info['openid']]);
+        if(empty($member_info)){
+            $member_info=['nickname'=>$wx_user_info['nickname'],'head_pic'=>$wx_user_info['headimgurl'],'openid'=>$wx_user_info['openid'],'mobile'=>'','sex'=>$wx_user_info['sex'],'money'=>'0','points'=>'0','is_administration'=>'1'];
+            $member_info['id']=MasterModel::inIt('member')->insertData($member_info);
+        }
+        return $member_info;
+    }
 }
 
 ?>
