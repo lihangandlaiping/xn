@@ -10,6 +10,7 @@ use app\member\model\Member;
 use My\MasterController;
 use My\MasterModel;
 use think\Config;
+use think\Request;
 use wx_model\Weixinmodel;
 
 class HomeController extends MasterController
@@ -114,7 +115,50 @@ class HomeController extends MasterController
         return $list;
     }
 
+    /**
+     * 验证权限
+     */
+    protected function isAdministration(){
+        if($this->member_info['is_administration']!=1)$this->error('当前用户无权限');
+    }
 
+    /**
+     * 操作成功跳转的快捷方法
+     */
+    protected function success($msg = '', $url = null, $data = '', $wait = 3)
+    {
+        $result = [
+            'code' => '1',
+            'msg'  => $msg,
+            'data' => $data,
+            'url'  => $url,
+            'wait' => $wait,
+        ];
+        if(Request::instance()->isAjax()){
+            exit(json_encode($result));
+        }else{
+            return view('public/index/success',$result);
+        }
+    }
+
+    /**
+     * 操作错误跳转的快捷方法
+     */
+    function error($msg = '', $url = null, $data = '', $wait = 3,$parentwindow=0)
+    {
+        $result = [
+            'code' => 0,
+            'msg'  => $msg,
+            'data' => $data,
+            'url'  => $url,
+            'wait' => $wait
+        ];
+        if(Request::instance()->isAjax()){
+            exit(json_encode($result));
+        }else{
+            return view('public/index/error',$result);
+        }
+    }
 
 
 

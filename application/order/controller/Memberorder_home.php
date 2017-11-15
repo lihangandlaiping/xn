@@ -41,9 +41,9 @@ class MemberorderHome extends HomeController
         $join = array();
         $list = $this->getListData($this->model_name, $where, $field, $order, $group, $join);
         if($list){
-            $this->success('获取信息成功','',$list);
+            return $this->success('获取信息成功','',$list);
         }else{
-            $this->error('已到最后一页');
+            return $this->error('已到最后一页');
         }
 
     }

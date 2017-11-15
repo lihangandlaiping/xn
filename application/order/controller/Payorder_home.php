@@ -35,10 +35,11 @@ class PayorderHome extends HomeController
      */
     function addGoodsOrder()
     {
+        $this->isAdministration();
         if (Request::instance()->isPost()) {
             $data=input('post.');
-            if(empty($data['goods_list']))$this->error('请选择订单商品');
-            if(empty($data['order_sn']))$this->error('缺少必要参数');
+            if(empty($data['goods_list']))return $this->error('请选择订单商品');
+            if(empty($data['order_sn']))return $this->error('缺少必要参数');
             if (!is_object($this->num_obj)) {
                 $this->member_order = new Memberorder();
             }
@@ -47,7 +48,7 @@ class PayorderHome extends HomeController
                 //添加订单
                 $id=MasterModel::inIt('pay_order')->insertData(['goods_id'=>$order_goods['id'],'goods_name'=>$order_goods['goods_name'],'img'=>$order_goods['goods_logo'],'price'=>$order_goods['price'],'pay_num'=>$order_goods['num'],'add_time'=>$add_time,'pay_status'=>'2','status'=>'1','amount_money'=>$data['total_money'],'order_sn'=>$data['order_sn'],'member_id'=>$this->member_info['id']]);
             }
-            $this->success('订单创建成功',url('getOrderInfo',['order_sn'=>$data['order_sn'],'type'=>'1']));
+            return $this->success('订单创建成功',url('getOrderInfo',['order_sn'=>$data['order_sn'],'type'=>'1']));
         } else {
             if (!is_object($this->num_obj)) {
                 $this->num_obj = new Numberrecord();
@@ -64,10 +65,11 @@ class PayorderHome extends HomeController
      */
     function getGoodsInfo()
     {
+        $this->isAdministration();
         $isbn = input('isbn');
-        if (empty($isbn)) $this->error('参数错误');
+        if (empty($isbn))return  $this->error('参数错误');
         $goods_info = MasterModel::inIt('goods')->field('id,goods_name,price,goods_logo')->getOne(['isbn' => $isbn]);
-        if (empty($goods_info)) $this->error('商品不存在');
+        if (empty($goods_info))return $this->error('商品不存在');
         $this->success('获取商品信息成功', '', $goods_info);
     }
 
@@ -76,9 +78,9 @@ class PayorderHome extends HomeController
      */
     function memberAffirmOrderInfo(){
         $order_sn=input('order_sn','');
-        if(empty($order_sn))$this->error('订单号不合法');
+        if(empty($order_sn))return $this->error('订单号不合法');
         $goods_list=MasterModel::inIt('pay_order')->field('id,order_sn,price,amount_money,goods_name,pay_num,goods_id,img')->getListData(['member_id'=>$this->member_info['id'],'order_sn'=>$order_sn]);
-        if(empty($goods_list))$this->error('当前订单不存在');
+        if(empty($goods_list))return $this->error('当前订单不存在');
         if(Request::instance()->isPost()){
             $row=MasterModel::inIt('pay_order')->updateData(['status'=>'2','pay_status'=>'2'],['status'=>'1','member_id'=>$this->member_info['id'],'order_sn'=>$order_sn]);
             if($row){
@@ -88,9 +90,9 @@ class PayorderHome extends HomeController
                 $ids=$this->member_order_obj->setUserGoodsInfo($goods_list,$this->member_info['id']);
             }
             if(empty($ids)){
-                $this->error('当前订单已确认');
+                return $this->error('当前订单已确认');
             }else{
-                $this->success('订单确认成功');
+                return $this->success('订单确认成功');
             }
         }else{
             $order_info=['order_sn'=>$goods_list[0]['order_sn'],'amount_money'=>$goods_list[0]['amount_money']];
@@ -103,9 +105,9 @@ class PayorderHome extends HomeController
      */
     function getOrderInfo(){
         $order_sn=input('order_sn','');
-        if(empty($order_sn))$this->error('缺少必要参数');
+        if(empty($order_sn))return $this->error('缺少必要参数');
         $status=MasterModel::inIt('pay_order')->where(['member_id'=>$this->member_info['id'],'order_sn'=>$order_sn])->value('status');
-        if(empty($status))$this->error('当前订单不存在');
+        if(empty($status))return $this->error('当前订单不存在');
         $affirm_url=url('memberAffirmOrderInfo',['order_sn'=>$order_sn],true,true);
         return view('get_order_info', ['affirm_url' => $affirm_url,'order_sn'=>$order_sn,'status'=>$status]);
     }

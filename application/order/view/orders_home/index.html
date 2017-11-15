@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/jquery-weui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/weui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/common.css"/>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/jquery-weui.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/wap/css/alert.css">
+    <script type="text/javascript" src="__PUBLIC__/wap/js/alert.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/wap/js/vue.min.js"></script>
+    <style type="text/css">
+        body {
+            background: #f2f2f2;
+        }
+
+        .weui-cell {
+            padding: 15px 15px 16.5px;
+            border-bottom: 1px solid #d0d0d0;
+        }
+
+        .weui-cell:before {
+            display: none;
+        }
+
+        .weui-cell__hd img {
+            width: 90px;
+            height: 90px;
+            border: 1px solid #cccccc;
+            margin-right: 15px;
+        }
+
+        .not-exchange-record {
+            text-align: center;
+            padding-top: 70px;
+        }
+
+        .not-exchange-record img {
+            width: 100px;
+        }
+
+        .not-exchange-record p {
+            color: #666666;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="my-index-header">
+    <div class="my-logo">
+        <img src="{$member_info.headimgurl}"/>
+    </div>
+    <div style="float: left;margin-left: 11px;margin-top: 25px;">
+        <div class="my-index-name">{$member_info.nickname}</div>
+    </div>
+</div>
+<div id="app" >
+    <div style="padding-bottom: 49px;" v-if="is_list >= 1">
+        <div class="exchange-msg" v-for="order in order_list">
+            <div class="exchange-shop">
+                <div class="exchange-shop-name">
+                    <div style="float: left;"><img
+                            src="__PUBLIC__/wap/img/Exchange record _icon_shop.png"/>
+                    </div>
+                    <div style="float: left;margin-left: 4px;font-size: 14px;color: #333333;">
+                        店铺: 鲜女美妆</div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="exchange-record-receipt-status"> {{ order.status === '1' ? '未确认' : '已完成' }}</div>
+                <div style="clear: both;">服务类型:{{order.order_title}}</div>
+                <div class="exchange-date">购买时间:{{format(order.add_time)}}</div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="weui-cell" v-for="item in order.order_item">
+                <div class="weui-cell__hd" style="margin-top: -15px;"><img
+                        v-bind:src="item.img"/></div>
+                <div class="weui-cell__bd">
+                    <div class="wxmall-index-content-goods-name"
+                         style="font-size: 14px;">{{item.goods_name}}
+                    </div>
+                    <div class="exchange-record-goods-num">
+                        库存数量： X {{item.surplus_num}}
+                    </div>
+                    <div class="exchange-record-integral-num">
+                        使用数量：<span>{{item.to_num}} </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="not-exchange-record" v-else>
+        <img src="__PUBLIC__/wap/img/233_03.png"/>
+        <p>-~-暂无购买记录</p>
+    </div>
+</div>
+<div class="footerbutton2">
+    <a href="">
+        <button style="background: #f84e25;"><span><img
+                src="__PUBLIC__/wap/img/Tab_icon_index.png"/></span><span>我的服务</span>
+        </button>
+    </a>
+    <a href="{:url('order/memberorder_home/index')}">
+        <button style="background: #fd6c52;"><span><img
+                src="__PUBLIC__/wap/img/Tab_icon_my.png"/></span><span>我的商品</span>
+        </button>
+    </a>
+</div>
+<script>
+
+    var root = '{:__ROOT__}';
+    var order_list={:json_encode($order_list)};
+    var is_listpage=true;
+    var page = 1;
+    var obj = new Vue({
+        el: '#app',
+        data: {
+            is_list: '{$is_list}',
+            order_list: order_list
+        },
+        methods: {
+            format: function (timestamp) {
+                //timestamp是整数，否则要parseInt转换,不会出现少个0的情况
+                var date = new Date(timestamp * 1000);
+                var y = 1900 + date.getYear();
+                var m = "0" + (date.getMonth() + 1);
+                var d = "0" + date.getDate();
+                return y + "-" + m.substring(m.length - 2, m.length) + "-" + d.substring(d.length - 2, d.length);
+            }
+        }
+    });
+
+    /**
+     * 活动加载
+     */
+    $(window).scroll(function () {
+        if (!is_listpage)return false;
+
+        var sHeight = $(document).scrollTop();
+        var wHeight = $(document).height() - $(window).height();
+        if (sHeight >= (wHeight - 80)) {
+            is_listpage=false;
+            qq_alert('加载中...','loading');
+            $.get("{:url('ajaxMemberOrderList')}",{'p':page},function (data) {
+                remove_qq_alert();
+                if(data.code=='1'){
+                    ++page;
+                    var leng=data.data.length;
+                    for (var i=0;i<leng;++i){
+                        obj.goods_list.push(data.data[i]);
+                    }
+                    is_listpage=true;
+                }else {
+                    qq_alert('已到最后一页');
+                    is_listpage=false;
+                }
+            },'json');
+        }
+    });
+
+
+</script>
+</body>
+</html>

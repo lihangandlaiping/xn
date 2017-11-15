@@ -31,7 +31,41 @@ class OrdersHome extends HomeController
 
     function index()
     {
+        $where = array('member_id'=>$this->member_info['id']);
+        $field = '*';
+        $order = 'id desc';
+        $group = '';
+        $join = array();
+        $list = $this->getListData($this->model_name, $where, $field, $order, $group, $join);
+        $list=$this->getOrderItemInfo($list);
+        return view('index',['order_list'=> $list,'is_list'=> count($list),'member_info'=> $this->wx_user_info]);
+    }
 
+    function ajaxMemberOrderList(){
+        $where = array('member_id'=>$this->member_info['id']);
+        $field = '*';
+        $order = 'id desc';
+        $group = '';
+        $join = array();
+        $list = $this->getListData($this->model_name, $where, $field, $order, $group, $join);
+        $list=$this->getOrderItemInfo($list);
+        if($list){
+            return $this->success('获取信息成功','',$list);
+        }else{
+            return $this->error('已到最后一页');
+        }
+    }
+
+    /**
+     * 获取订单明细
+     * @param $list
+     * @return mixed
+     */
+    private function getOrderItemInfo($list){
+        foreach ($list as &$value){
+            $value['order_item']=MasterModel::inIt('order_item o')->field('o.id,o.member_order_id,o.to_num,m.surplus_num,m.goods_name,m.img')->getListData(['o.order_id'=>$value['id'],'member_id'=>$this->member_info['id']],'id asc','',[['member_order m','m.id=o.member_order_id','left']]);
+        }
+        return $list;
     }
 
     /**
@@ -39,6 +73,7 @@ class OrdersHome extends HomeController
      * @return \think\response\View
      */
     function setOrderTitle(){
+        $this->isAdministration();
         $list=MasterModel::inIt('nursing')->field('id,name,add_time')->getListData(['status'=>'1']);
         return view('set_order_title',['list'=>$list]);
     }
@@ -49,6 +84,7 @@ class OrdersHome extends HomeController
      */
     function addOrder()
     {
+        $this->isAdministration();
         if ($data = input('post.')) {
             if(empty($data['nursing_names']))$this->error('请选择服务');
             if(empty($data['nursing_ids']))$this->error('缺少必要参数');
@@ -60,15 +96,15 @@ class OrdersHome extends HomeController
             }
             $order_item=MasterModel::inIt('order_item')->insertData($data['goods_list']);
             if($order_item){
-                $this->success('订单创建成功',url('getOrderInfo',['order_id'=>$order_id]));
+                return $this->success('订单创建成功',url('getOrderInfo',['order_id'=>$order_id]));
             }else{
-                $this->error('订单创建失败');
+                return $this->error('订单创建失败');
             }
         } else {
             $nursing_ids=input('nursing_ids','');
-            if(empty($nursing_ids))$this->error('参数错误');
+            if(empty($nursing_ids))return $this->error('参数错误');
             $nursing_names=MasterModel::inIt('nursing')->where(['id'=>['in',$nursing_ids]])->column('abbreviation');
-            if(empty($nursing_names))$this->error('手工信息不存在');
+            if(empty($nursing_names))return  $this->error('手工信息不存在');
             $nursing_names=implode(',',$nursing_names);
             if (!is_object($this->num_obj)) {
                 $this->num_obj = new Numberrecord();
@@ -82,10 +118,10 @@ class OrdersHome extends HomeController
 
     function memberAffirmOrderInfo(){
         $order_id=input('order_id');
-        if(empty($order_id))$this->error('缺少必要参数');
+        if(empty($order_id))return $this->error('缺少必要参数');
         $order_info=MasterModel::inIt('orders')->getOne(['id'=>$order_id,'member_id'=>$this->member_info['id']]);
-        if(empty($order_info))$this->error('订单信息不存在');
-        if($order_info['status']!='1')$this->error('当前订单已确认',url('index'));
+        if(empty($order_info))return $this->error('订单信息不存在');
+        if($order_info['status']!='1')return $this->error('当前订单已确认',url('index'));
         if(Request::instance()->isPost()){
             if(empty($this->order_item_model) || !is_object($this->order_item_model)){
                 $this->order_item_model= new Orderitem();
@@ -93,9 +129,9 @@ class OrdersHome extends HomeController
             $this->order_item_model->setMemberOrderGoodsNum($order_id);
             $row=MasterModel::inIt('orders')->updateData(['status'=>'2'],['id'=>$order_id]);
             if($row===false){
-                $this->error('确实失败');
+                return $this->error('确实失败');
             }else{
-                $this->success('确认成功',url('index'));
+                return $this->success('确认成功',url('index'));
             }
         }else{
             $order_item=MasterModel::inIt('order_item o')->field('o.id,o.member_order_id,o.to_num,m.surplus_num,m.goods_name,m.img')->getListData(['o.order_id'=>$order_id,'member_id'=>$this->member_info['id']],'id asc','',[['member_order m','m.id=o.member_order_id','left']]);
@@ -104,9 +140,10 @@ class OrdersHome extends HomeController
     }
 
     function getOrderInfo(){
+        $this->isAdministration();
         $order_id=input('order_id');
         $order_info=MasterModel::inIt('orders')->getOne(['id'=>$order_id,'member_id'=>$this->member_info['id']]);
-        if(empty($order_info))$this->error('订单信息不存在');
+        if(empty($order_info))return $this->error('订单信息不存在');
         return view('get_order_info',['order_info'=>$order_info,'affirm_url'=>url('memberAffirmOrderInfo',['order_id'=>$order_id],true,true)]);
     }
 
@@ -115,10 +152,12 @@ class OrdersHome extends HomeController
      */
     function getMyGoodsInfo(){
         $isbn = input('isbn');
-        if (empty($isbn)) $this->error('参数错误');
+        if (empty($isbn)) return $this->error('参数错误');
         $goods_info = MasterModel::inIt('member_order m')->field('m.id,m.goods_id,m.goods_name,g.price,g.goods_logo,m.surplus_num')->getOne(['g.isbn' => $isbn,'m.member_id'=>$this->member_info['id']],'m.surplus_num desc','',[['goods g','g.id=m.goods_id','left']]);
-        if (empty($goods_info)) $this->error('商品不存在');
+        if (empty($goods_info))return $this->error('商品不存在');
         $this->success('获取商品信息成功', '', $goods_info);
     }
+
+
 
 }
