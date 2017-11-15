@@ -82,7 +82,7 @@ class PayorderHome extends HomeController
         $goods_list=MasterModel::inIt('pay_order')->field('id,order_sn,price,amount_money,goods_name,pay_num,goods_id,img')->getListData(['member_id'=>$this->member_info['id'],'order_sn'=>$order_sn]);
         if(empty($goods_list))return $this->error('当前订单不存在');
         if(Request::instance()->isPost()){
-            $row=MasterModel::inIt('pay_order')->updateData(['status'=>'2','pay_status'=>'2'],['status'=>'1','member_id'=>$this->member_info['id'],'order_sn'=>$order_sn]);
+            $row=MasterModel::inIt('pay_order')->updateData(['status'=>'2','pay_status'=>'2','member_id'=>$this->member_info['id']],['status'=>'1','member_id'=>$this->member_info['id'],'order_sn'=>$order_sn]);
             if($row){
                 if(empty($this->member_order_obj) || !is_object($this->member_order_obj)){
                     $this->member_order_obj=new Memberorder();

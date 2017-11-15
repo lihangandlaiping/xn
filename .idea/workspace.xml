@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a35cbec3-9331-49bb-b03a-d9f2c99197f9" name="默认" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/order/view/public/index/error.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/order/view/public/index/success.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/admin/css/example.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/admin/css/weui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/admin/css/weui.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/member/model/Member.php" afterPath="$PROJECT_DIR$/application/member/model/Member.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/controller/Memberorder_home.php" afterPath="$PROJECT_DIR$/application/order/controller/Memberorder_home.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/controller/Orders_home.php" afterPath="$PROJECT_DIR$/application/order/controller/Orders_home.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/controller/Payorder_home.php" afterPath="$PROJECT_DIR$/application/order/controller/Payorder_home.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/view/memberorder_home/index.html" afterPath="$PROJECT_DIR$/application/order/view/memberorder_home/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/view/orders_home/index.html" afterPath="$PROJECT_DIR$/application/order/view/orders_home/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/order/view/orders_home/member_affirm_order_info.html" afterPath="$PROJECT_DIR$/application/order/view/orders_home/member_affirm_order_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extend/Home/HomeController.php" afterPath="$PROJECT_DIR$/extend/Home/HomeController.php" />
     </list>
     <ignored path="xianvu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +27,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Payorder_home.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Payorder_home.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/order/controller/Payorder_home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1589">
-              <caret line="48" column="109" selection-start-line="48" selection-start-column="109" selection-end-line="48" selection-end-column="109" />
+            <state relative-caret-position="-64">
+              <caret line="86" column="69" selection-start-line="86" selection-start-column="69" selection-end-line="86" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Memberorder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/order/model/Memberorder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-95">
+              <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -62,7 +60,7 @@
       <file leaf-file-name="Memberorder_home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/order/controller/Memberorder_home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="1312">
               <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
               <folding />
             </state>
@@ -82,18 +80,18 @@
       <file leaf-file-name="Goods_home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/goods/controller/Goods_home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
+            <state relative-caret-position="704">
               <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Orders_home.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Orders_home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/order/controller/Orders_home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="74" column="26" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="26" />
+            <state relative-caret-position="578">
+              <caret line="132" column="18" selection-start-line="132" selection-start-column="18" selection-end-line="132" selection-end-column="18" />
               <folding>
                 <element signature="e#69#102#0#PHP" expanded="true" />
               </folding>
@@ -104,7 +102,7 @@
       <file leaf-file-name="Orderitem_home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/order/controller/Orderitem_home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-384">
+            <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -114,7 +112,7 @@
       <file leaf-file-name="Numberrecord_home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/order/controller/Numberrecord_home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-480">
+            <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -124,18 +122,8 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/extend/Home/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
+            <state relative-caret-position="4512">
               <caret line="151" column="28" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="success.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/order/view/public/index/success.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -200,9 +188,9 @@
         <option value="$PROJECT_DIR$/application/order/view/public/index/error.html" />
         <option value="$PROJECT_DIR$/application/order/view/public/index/success.html" />
         <option value="$PROJECT_DIR$/extend/Home/HomeController.php" />
+        <option value="$PROJECT_DIR$/application/order/controller/Memberorder_home.php" />
         <option value="$PROJECT_DIR$/application/order/controller/Orders_home.php" />
         <option value="$PROJECT_DIR$/application/order/controller/Payorder_home.php" />
-        <option value="$PROJECT_DIR$/application/order/controller/Memberorder_home.php" />
       </list>
     </option>
   </component>
@@ -792,21 +780,22 @@
       <workItem from="1510708810817" duration="6666000" />
       <workItem from="1510735521836" duration="1348000" />
       <workItem from="1510739304942" duration="1969000" />
+      <workItem from="1510741414307" duration="155000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59129000" />
+    <option name="totallyTimeSpent" value="59284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16774194" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16935484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32745314" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32745314" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -907,14 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/order/model/Memberorder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2976">
-          <caret line="91" column="9" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1057,7 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
           <caret line="25" column="30" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,7 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5326">
           <caret line="237" column="52" selection-start-line="237" selection-start-column="52" selection-end-line="237" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1156,7 +1135,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/extend/Home/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="4512">
           <caret line="151" column="28" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="28" />
           <folding />
         </state>
@@ -1164,7 +1143,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/order/controller/Orderitem_home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-384">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1172,7 +1151,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/order/controller/Numberrecord_home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-480">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1180,7 +1159,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/goods/controller/Goods_home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
+        <state relative-caret-position="704">
           <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
           <folding />
         </state>
@@ -1204,32 +1183,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/order/controller/Memberorder_home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="1312">
           <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/order/controller/Payorder_home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1589">
-          <caret line="48" column="109" selection-start-line="48" selection-start-column="109" selection-end-line="48" selection-end-column="109" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/order/controller/Orders_home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="74" column="26" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="26" />
+        <state relative-caret-position="578">
+          <caret line="132" column="18" selection-start-line="132" selection-start-column="18" selection-end-line="132" selection-end-column="18" />
           <folding>
             <element signature="e#69#102#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/order/model/Memberorder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95">
+          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/order/controller/Payorder_home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-64">
+          <caret line="86" column="69" selection-start-line="86" selection-start-column="69" selection-end-line="86" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="webServersAuthStorage">
-    <data>AAAAsHHJHyIFkHtPGxuScXq2bnQZxjgU+0EauAkc6vIu3jLeRa0+E6zY65pick05ei3EipmJ0DRqBK0WrexfYYIrItIau/eJr/FcOmR5AM26THn/GvTnDd1EtqFP/dA5Ty94bfpNN746fIvEXn8SS33lqB9o4ZWCnPiJqJLuCP2I8cv/ZbugiprrKz0ICC0tpwMQoFznyTVLBEvdSXAcQCZ/EekCvyeL7jxqsY0FuR94Ql2A6LLxROiJJMp4hiYhqzAMYg==</data>
+    <data>AAAAsM9ACqRmMLmnCMuqJs4DfKpFxABacrvo1C1z02IKMKREvBTdjqBMO8YT/WieW7IRKVR4pENNFNzUibN8FfhVwnGeKwLrfrWaDnLKEiiQe2a0m/yJVbPYJ/MAuSbxQPtBTK5WzDKJuTTFscpdiU5WTJrgIEoaLLWty9GMpqRzJuSF731UwTek5IPsa+RQkz8qQnJP6tVsLPi06wiGUlW763KzDrp/BDpLt+CmHz2l/awW4VRsAdknww+YqEQ9XdTmHQ==</data>
   </component>
 </project>

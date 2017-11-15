@@ -127,7 +127,7 @@ class OrdersHome extends HomeController
                 $this->order_item_model= new Orderitem();
             }
             $this->order_item_model->setMemberOrderGoodsNum($order_id);
-            $row=MasterModel::inIt('orders')->updateData(['status'=>'2'],['id'=>$order_id]);
+            $row=MasterModel::inIt('orders')->updateData(['status'=>'2','member_id'=>$this->member_info['id']],['id'=>$order_id]);
             if($row===false){
                 return $this->error('确实失败');
             }else{
